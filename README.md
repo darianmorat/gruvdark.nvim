@@ -1,1 +1,1 @@
-# gruvdark.nvim
+# GRUVDARK THEME
