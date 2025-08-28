@@ -31,7 +31,7 @@ M.palettes = {
       column = "#232323",
       indent = "#323232",
       status_line = "#252525",
-      cursor_line = "NONE",
+      none = "NONE",
    },
 
    gruvdark_light = {

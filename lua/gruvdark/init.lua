@@ -1,7 +1,13 @@
 local M = {}
 
-M.load = function(palette_name, opts)
+M.setup = function(opts)
    opts = opts or {}
+   -- Options here
+   M.opts = opts
+end
+
+M.load = function(palette_name, opts)
+   opts = opts or M.opts or {}
    vim.cmd("highlight clear")
    if vim.fn.exists("syntax_on") == 1 then
       vim.cmd("syntax reset")

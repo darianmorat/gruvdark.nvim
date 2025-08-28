@@ -37,7 +37,7 @@ end
 local function common_highlights(colors)
    return {
       normal = { fg = colors.fg, bg = colors.bg },
-      cursor_line = { bg = colors.cursor_line },
+      cursor_line = { bg = colors.none },
       visual = { bg = colors.selection },
       vert_split = { fg = colors.bg3 },
       sign_column = { bg = colors.bg },
@@ -122,7 +122,7 @@ M.setup = function(colors)
       HintMsg = c.pink,
       ModeMsg = c.fg,
       MoreMsg = c.green,
-      Question = c.blue,
+      Question = c.orange,
 
       -- Additional useful message highlights
       Directory = c.blue,
@@ -275,7 +275,7 @@ M.setup = function(colors)
       -- Sections / UI
       LazyH1 = { fg = colors.fg, bg = colors.red_dark },
       LazyH2 = c.fg,
-      LazyButton = c.bg1,
+      LazyButton = { bg = colors.none },
       LazyButtonActive = c.selection_bg,
       LazyComment = c.grey,
       LazyNormal = common.normal,
