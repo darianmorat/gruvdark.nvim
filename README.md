@@ -11,10 +11,22 @@ Using [Lazy.nvim](https://github.com/folke/lazy.nvim)
    "darianmorat/gruvdark.nvim",
    lazy = false,
    priority = 1000,
-   config = function()
-      vim.cmd.colorscheme("gruvdark")
-   end,
+   opts = {},
 }
+```
+
+Enable the colorscheme:
+
+```lua
+vim.cmd.colorscheme("gruvdark")
+```
+
+## Configuration
+
+```lua
+opts = {
+   transparent = false, -- show/hide background
+},
 ```
 
 ## Contributing
