@@ -25,7 +25,9 @@ vim.cmd.colorscheme("gruvdark")
 
 ```lua
 opts = {
-   transparent = false, -- show/hide background
+   transparent = false, -- Show/hide background
+   colors = {}, -- Override default colors
+   highlights = {}, -- Override highlight groups
 },
 ```
 
