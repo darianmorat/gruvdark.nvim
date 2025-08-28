@@ -2,7 +2,6 @@ local M = {}
 
 M.setup = function(opts)
    opts = opts or {}
-   -- Options here
    M.opts = opts
 end
 
@@ -12,15 +11,32 @@ M.load = function(palette_name, opts)
    if vim.fn.exists("syntax_on") == 1 then
       vim.cmd("syntax reset")
    end
+
    local colors = require("gruvdark.colors").palettes[palette_name]
 
-   -- Make transparent if requested
+   -- Handle transparent option
    if opts.transparent then
       colors.bg = "NONE"
       colors.bg1 = "NONE"
    end
 
+   -- Override with user colors
+   if opts.colors then
+      for color_name, color_value in pairs(opts.colors) do
+         colors[color_name] = color_value
+      end
+   end
+
    local highlights = require("gruvdark.highlights").setup(colors)
+
+   -- Override with user highlights
+   if opts.highlights then
+      for group, hl in pairs(opts.highlights) do
+         highlights[group] = hl
+      end
+   end
+
+   -- Apply all highlights
    for group, hl in pairs(highlights) do
       vim.api.nvim_set_hl(0, group, hl)
    end
