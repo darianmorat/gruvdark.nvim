@@ -1,163 +1,241 @@
 local M = {}
 
-M.setup = function(colors)
+local function color_shortcuts(colors)
    return {
-      -- Editor base
-      Normal = { fg = colors.fg, bg = colors.bg },
-      NormalFloat = { fg = colors.fg, bg = colors.bg },
-      -- FloatBorder = { fg = colors.fg, bg = colors.bg },
-      -- NormalNC = { fg = colors.fg, bg = colors.bg },
-      MsgArea = { fg = colors.fg, bg = colors.bg },
+      -- Base
+      fg = { fg = colors.fg },
+      fg_light = { fg = colors.fg_light },
+      blue = { fg = colors.blue },
+      blue_dark = { fg = colors.blue_dark },
+      red = { fg = colors.red },
+      red_dark = { fg = colors.red_dark },
+      green = { fg = colors.green },
+      pink = { fg = colors.pink },
+      purple = { fg = colors.purple },
+      aqua = { fg = colors.aqua },
+      orange = { fg = colors.orange },
+      grey = { fg = colors.grey },
+      grey_light = { fg = colors.grey_light },
+
+      -- Background
+      bg = { bg = colors.bg },
+      bg1 = { bg = colors.bg1 },
+      bg2 = { bg = colors.bg2 },
+      bg3 = { bg = colors.bg3 },
+      bg4 = { bg = colors.bg4 },
+      bg5 = { bg = colors.bg5 },
+
+      -- Special
+      menu_bg = { bg = colors.menu },
+      column_bg = { bg = colors.column },
+      indent_bg = { bg = colors.indent },
+      status_line_bg = { bg = colors.status_line },
+      selection_bg = { bg = colors.selection },
+   }
+end
+
+local function common_highlights(colors)
+   return {
+      normal = { fg = colors.fg, bg = colors.bg },
+      cursor_line = { bg = colors.cursor_line },
+      visual = { bg = colors.selection },
+      vert_split = { fg = colors.bg3 },
+      sign_column = { bg = colors.bg },
+      status_line = { fg = colors.fg, bg = colors.status_line },
+      status_line_nc = { fg = colors.grey, bg = colors.status_line },
+      end_of_buffer = { fg = colors.bg3 },
+      selection = { bg = colors.selection },
+      search = { fg = colors.bg, bg = colors.red_dark },
+      menu = { fg = colors.fg, bg = colors.menu },
+      column = { bg = colors.column },
+      indent_guide = { fg = colors.indent },
+   }
+end
+
+M.setup = function(colors)
+   local common = common_highlights(colors)
+   local c = color_shortcuts(colors)
+
+   return {
+      -- ================================================================================
+      -- BASE GROUPS
+      -- ================================================================================
+      Normal = common.normal,
+      NormalFloat = common.normal,
+      MsgArea = common.normal,
 
       -- Cursor & selection
       Cursor = { fg = colors.bg, bg = colors.fg },
       Cursor2 = { fg = colors.bg, bg = colors.red },
-      CursorLine = { bg = colors.cursor_line },
-      CursorColumn = { bg = colors.column },
-      Visual = { bg = colors.selection },
-      -- VisualNOS = { bg = colors.selection },
+      CursorLine = common.cursor_line,
+      CursorColumn = common.column,
+      Visual = common.visual,
 
       -- Line numbers & columns
-      LineNr = { fg = colors.grey },
-      CursorLineNr = { fg = colors.grey_light },
-      SignColumn = { bg = colors.bg },
-      ColorColumn = { bg = colors.column },
-      EndOfBuffer = { fg = colors.bg3 },
+      LineNr = c.grey,
+      CursorLineNr = c.grey_light,
+      SignColumn = common.sign_column,
+      ColorColumn = common.column,
+      EndOfBuffer = common.end_of_buffer,
 
       -- Window elements
-      WinSeparator = { fg = colors.bg3 },
+      WinSeparator = common.vert_split,
       Folded = { fg = colors.fg, bg = colors.bg2 },
       FoldColumn = { fg = colors.grey, bg = colors.bg },
 
       -- Search & matching
-      Search = { fg = colors.bg, bg = colors.red_dark },
+      Search = common.search,
       IncSearch = { fg = colors.fg_light, bg = colors.red_dark },
-      Substitute = { fg = colors.bg, bg = colors.red_dark },
+      Substitute = common.search,
       MatchParen = { fg = colors.fg_light, bg = colors.menu },
 
-      -- Flash.nvim
-      FlashCurrent = { fg = colors.bg, bg = colors.red_dark },
-      FlashLabel = { fg = colors.fg_light, bg = colors.blue_dark },
-
       -- Indentation
-      IblIndent = { fg = colors.indent },
-      IblScope = { fg = colors.grey_light },
+      IblIndent = common.indent_guide,
+      IblScope = c.grey_light,
 
       -- Yank highlighting
       YankHighlight = { fg = colors.fg_light, bg = colors.bg2 },
 
-      -- Syntax highlighting
-      Comment = { fg = colors.grey },
-      String = { fg = colors.green },
-      Character = { fg = colors.green },
-      Number = { fg = colors.orange },
-      Float = { fg = colors.orange },
-      Boolean = { fg = colors.orange },
-      Identifier = { fg = colors.aqua },
-      Function = { fg = colors.red },
-      Statement = { fg = colors.grey },
-      Keyword = { fg = colors.blue },
-      Operator = { fg = colors.blue },
-      Type = { fg = colors.fg },
-      Special = { fg = colors.red },
-      Delimiter = { fg = colors.fg },
-      Title = { fg = colors.orange },
+      -- ================================================================================
+      -- SYNTAX HIGHLIGHTING
+      -- ================================================================================
+      Comment = c.grey,
+      String = c.green,
+      Character = c.green,
+      Number = c.orange,
+      Float = c.orange,
+      Boolean = c.orange,
+      Identifier = c.aqua,
+      Function = c.red,
+      Statement = c.grey,
+      Keyword = c.blue,
+      Operator = c.blue,
+      Type = c.fg,
+      Special = c.red,
+      Delimiter = c.fg,
+      Title = c.orange,
 
       -- Standard Vim message highlights
-      WarningMsg = { fg = colors.orange },
-      ErrorMsg = { fg = colors.red },
-      InfoMsg = { fg = colors.blue },
-      HintMsg = { fg = colors.pink },
-      ModeMsg = { fg = colors.fg },
-      MoreMsg = { fg = colors.green },
-      Question = { fg = colors.blue },
+      WarningMsg = c.orange,
+      ErrorMsg = c.red,
+      InfoMsg = c.blue,
+      HintMsg = c.pink,
+      ModeMsg = c.fg,
+      MoreMsg = c.green,
+      Question = c.blue,
 
       -- Additional useful message highlights
-      Directory = { fg = colors.blue },
-      SpecialKey = { fg = colors.grey },
-      NonText = { fg = colors.grey },
-      Whitespace = { fg = colors.grey },
+      Directory = c.blue,
+      SpecialKey = c.grey,
+      NonText = c.grey,
+      Whitespace = c.grey,
 
-      -- You could also create a custom highlight group
-      FileChangedSign = { fg = colors.orange },
-      FileModifiedSign = { fg = colors.red },
+      -- Custom highlight groups
+      FileChangedSign = c.orange,
+      FileModifiedSign = c.red,
 
-      -- Treesitter variables & parameters
-      ["@variable"] = { fg = colors.fg },
-      ["@variable.builtin"] = { fg = colors.orange },
-      ["@parameter"] = { fg = colors.fg },
-      ["@parameter.reference"] = { fg = colors.fg },
+      -- ================================================================================
+      -- TREESITTER
+      -- ================================================================================
+      -- variables & parameters
+      ["@variable"] = c.fg,
+      ["@variable.builtin"] = c.orange,
+      ["@parameter"] = c.fg,
+      ["@parameter.reference"] = c.fg,
 
-      -- Treesitter functions & constructors
-      ["@function"] = { fg = colors.red },
-      ["@function.builtin"] = { fg = colors.red },
-      ["@constructor"] = { fg = colors.aqua },
+      -- functions & constructors
+      ["@function"] = c.red,
+      ["@function.builtin"] = c.red,
+      ["@constructor"] = c.aqua,
 
-      -- Treesitter types & constants
-      ["@type"] = { fg = colors.fg },
-      ["@type.builtin"] = { fg = colors.orange },
-      ["@constant"] = { fg = colors.orange },
-      ["@constant.builtin"] = { fg = colors.orange },
+      -- types & constants
+      ["@type"] = c.fg,
+      ["@type.builtin"] = c.orange,
+      ["@constant"] = c.orange,
+      ["@constant.builtin"] = c.orange,
 
-      -- Treesitter keywords
-      ["@keyword"] = { fg = colors.blue },
-      ["@keyword.import"] = { fg = colors.pink },
-      ["@keyword.return"] = { fg = colors.pink },
-      ["@keyword.conditional"] = { fg = colors.pink },
-      ["@keyword.exception"] = { fg = colors.pink },
-      ["@keyword.repeat"] = { fg = colors.pink },
-      ["@keyword.operator"] = { fg = colors.pink },
+      -- keywords
+      ["@keyword"] = c.blue,
+      ["@keyword.import"] = c.pink,
+      ["@keyword.return"] = c.pink,
+      ["@keyword.conditional"] = c.pink,
+      ["@keyword.exception"] = c.pink,
+      ["@keyword.repeat"] = c.pink,
+      ["@keyword.operator"] = c.pink,
 
-      -- Treesitter punctuation
-      ["@punctuation.bracket"] = { fg = colors.fg },
-      ["@punctuation.delimiter"] = { fg = colors.grey_light },
-      ["@punctuation.special"] = { fg = colors.grey_light },
+      -- punctuation
+      ["@punctuation.bracket"] = c.fg,
+      ["@punctuation.delimiter"] = c.grey_light,
+      ["@punctuation.special"] = c.grey_light,
 
       -- LSP semantic tokens
-      ["@lsp.type.class"] = { fg = colors.aqua },
-      ["@lsp.type.namespace"] = { fg = colors.aqua },
-      ["@lsp.typemod.variable.defaultLibrary"] = { fg = colors.orange },
+      ["@lsp.type.class"] = c.aqua,
+      ["@lsp.type.namespace"] = c.aqua,
+      ["@lsp.typemod.variable.defaultLibrary"] = c.orange,
 
       -- HTML/XML tags
-      ["@tag"] = { fg = colors.red },
-      ["@tag.attribute"] = { fg = colors.purple },
-      ["@tag.delimiter"] = { fg = colors.red },
-      ["@tag.tsx"] = { fg = colors.aqua },
+      ["@tag"] = c.red,
+      ["@tag.attribute"] = c.purple,
+      ["@tag.delimiter"] = c.red,
+      ["@tag.tsx"] = c.aqua,
 
       -- CSS specific
-      ["@constant.css"] = { fg = colors.red },
-      ["@type.css"] = { fg = colors.red },
-      ["@attribute.css"] = { fg = colors.red },
-      ["@property.css"] = { fg = colors.blue },
-      ["@keyword.css"] = { fg = colors.red },
-      ["@keyword.directive.css"] = { fg = colors.pink },
-      ["@keyword.modifier.css"] = { fg = colors.pink },
-      ["@string.css"] = { fg = colors.green },
-      ["@punctuation.delimiter.css"] = { fg = colors.grey_light },
+      ["@constant.css"] = c.red,
+      ["@type.css"] = c.red,
+      ["@attribute.css"] = c.red,
+      ["@property.css"] = c.blue,
+      ["@keyword.css"] = c.red,
+      ["@keyword.directive.css"] = c.pink,
+      ["@keyword.modifier.css"] = c.pink,
+      ["@string.css"] = c.green,
+      ["@punctuation.delimiter.css"] = c.grey_light,
 
       -- JSON specific
-      ["@property.json"] = { fg = colors.red },
+      ["@property.json"] = c.red,
+
+      -- Lua specific
+      ["@constructor.lua"] = c.fg,
+      ["@keyword.operator.lua"] = c.blue,
+      ["@module.builtin.lua"] = c.aqua,
+      ["@property.lua"] = c.fg,
 
       -- Markdown
-      ["@markup.heading.1.markdown"] = { fg = colors.red },
-      ["@markup.heading.2.markdown"] = { fg = colors.red },
-      ["@markup.heading.3.markdown"] = { fg = colors.red },
-      ["@markup.heading.4.markdown"] = { fg = colors.red },
-      ["@markup.heading.5.markdown"] = { fg = colors.red },
-      ["@markup.heading.6.markdown"] = { fg = colors.red },
-      ["@markup.heading.html"] = { fg = colors.orange },
-      ["@markup.raw.block.markdown"] = { fg = colors.green },
-      ["@markup.link.markdown_inline"] = { fg = colors.fg },
-      ["@markup.link.label.markdown_inline"] = { fg = colors.blue },
+      ["@markup.heading.1.markdown"] = c.red,
+      ["@markup.heading.2.markdown"] = c.red,
+      ["@markup.heading.3.markdown"] = c.red,
+      ["@markup.heading.4.markdown"] = c.red,
+      ["@markup.heading.5.markdown"] = c.red,
+      ["@markup.heading.6.markdown"] = c.red,
+      ["@markup.heading.html"] = c.orange,
+      ["@markup.raw.block.markdown"] = c.green,
+      ["@markup.link.markdown_inline"] = c.fg,
+      ["@markup.link.label.markdown_inline"] = c.blue,
       ["@markup.link.url.markdown_inline"] = { fg = colors.aqua, underline = true },
-      markdownLinkText = { fg = colors.blue },
+      markdownLinkText = c.blue,
+
+      -- ================================================================================
+      -- LSP Context
+      -- ================================================================================
+      LspCxxHlGroupEnumConstant = c.orange,
+      LspCxxHlGroupMemberVariable = c.orange,
+      LspCxxHlGroupNamespace = c.blue,
+      LspCxxHlSkippedRegion = c.grey,
+      LspCxxHlSkippedRegionBeginEnd = c.red,
+
+      LspReferenceText = c.bg2,
+      LspReferenceWrite = c.bg2,
+      LspReferenceRead = c.bg2,
+
+      LspCodeLens = c.grey,
+      LspCodeLensSeparator = c.grey,
 
       -- Diagnostics
-      DiagnosticError = { fg = colors.red },
-      DiagnosticWarn = { fg = colors.orange },
-      DiagnosticInfo = { fg = colors.blue },
-      DiagnosticHint = { fg = colors.pink },
-      DiagnosticOk = { fg = colors.green },
+      DiagnosticError = c.red,
+      DiagnosticWarn = c.orange,
+      DiagnosticInfo = c.aqua,
+      DiagnosticHint = c.pink,
+      DiagnosticOk = c.green,
+
       DiagnosticVirtualTextError = { fg = colors.red, bg = colors.bg },
       DiagnosticVirtualTextWarn = { fg = colors.orange, bg = colors.bg },
       DiagnosticVirtualTextInfo = { fg = colors.blue, bg = colors.bg },
@@ -167,243 +245,282 @@ M.setup = function(colors)
       DiagnosticUnderlineInfo = { sp = colors.blue, undercurl = true },
       DiagnosticUnderlineHint = { sp = colors.pink, undercurl = true },
 
-      -- GitSigns
-      GitSignsAdd = { fg = colors.green },
-      GitSignsChange = { fg = colors.blue },
-      GitSignsDelete = { fg = colors.red },
-      GitSignsAddNr = { fg = colors.green },
-      GitSignsChangeNr = { fg = colors.blue },
-      GitSignsDeleteNr = { fg = colors.red },
-      GitSignsAddLn = { bg = colors.bg2 },
-      GitSignsChangeLn = { bg = colors.bg2 },
-      GitSignsDeleteLn = { bg = colors.bg2 },
-
-      -- Neo-tree
-      NeoTreeNormal = { fg = colors.fg, bg = colors.bg },
-      NeoTreeNormalNC = { fg = colors.fg, bg = colors.bg },
-      NeoTreeDirectoryIcon = { fg = colors.blue },
-      NeoTreeDirectoryName = { fg = colors.blue },
-      NeoTreeSymbolicLinkTarget = { fg = colors.aqua },
-      NeoTreeRootName = { fg = colors.orange },
-      NeoTreeDotfile = { fg = colors.grey },
-      NeoTreeFileIcon = { fg = colors.fg },
-      NeoTreeFileName = { fg = colors.fg },
-      NeoTreeFileNameOpened = { fg = colors.fg_light },
-      NeoTreeIndentMarker = { fg = colors.grey },
-      NeoTreeExpander = { fg = colors.grey },
-      NeoTreeModified = { fg = colors.orange },
-      NeoTreeGitAdded = { fg = colors.green },
-      NeoTreeGitConflict = { fg = colors.red },
-      NeoTreeGitDeleted = { fg = colors.red },
-      NeoTreeGitIgnored = { fg = colors.grey },
-      NeoTreeGitModified = { fg = colors.orange },
-      NeoTreeGitUnstaged = { fg = colors.orange },
-      NeoTreeGitUntracked = { fg = colors.green },
-      NeoTreeGitStaged = { fg = colors.green },
-
-      -- Telescope
-      TelescopeNormal = { fg = colors.fg, bg = colors.bg },
-      TelescopeBorder = { fg = colors.bg3, bg = colors.bg },
-      TelescopePromptNormal = { fg = colors.fg, bg = colors.bg },
-      TelescopePromptBorder = { fg = colors.bg3, bg = colors.bg },
-      TelescopePromptTitle = { fg = colors.orange },
-      TelescopeResultsTitle = { fg = colors.blue },
-      TelescopePreviewTitle = { fg = colors.green },
-      TelescopeSelection = { bg = colors.selection },
-      TelescopeSelectionCaret = { fg = colors.orange },
-      TelescopeMatching = { fg = colors.blue },
-
-      -- Lazy.nvim
-      LazyProgressTodo = { fg = colors.grey },
-      LazyProgressDone = { fg = colors.green },
-      LazyCommit = { fg = colors.green },
-      LazyCommitType = { fg = colors.pink },
-      LazyReasonPlugin = { fg = colors.red },
-      LazyReasonRuntime = { fg = colors.blue },
-      LazyReasonCmd = { fg = colors.orange },
-      LazyReasonSource = { fg = colors.aqua },
-      LazyReasonImport = { fg = colors.pink },
-      LazyButton = { bg = colors.bg2 },
-      LazyButtonActive = { bg = colors.selection },
-      LazyH1 = { fg = colors.orange },
-      LazyH2 = { fg = colors.blue },
-      LazyComment = { fg = colors.grey },
-      LazyNormal = { fg = colors.fg, bg = colors.bg },
-
-      -- Completion menu (nvim-cmp)
-      Pmenu = { fg = colors.fg, bg = colors.menu },
-      PmenuSel = { fg = colors.fg, bg = colors.selection },
-      PmenuSbar = { bg = colors.grey },
-      PmenuThumb = { bg = colors.grey_light },
-      CmpItemAbbrDeprecated = { fg = colors.grey, strikethrough = true },
-      CmpItemAbbrMatch = { fg = colors.blue },
-      CmpItemAbbrMatchFuzzy = { fg = colors.blue },
-      CmpItemKind = { fg = colors.pink },
-      CmpItemMenu = { fg = colors.grey },
-      CmpItemKindText = { fg = colors.fg },
-      CmpItemKindMethod = { fg = colors.blue },
-      CmpItemKindFunction = { fg = colors.blue },
-      CmpItemKindConstructor = { fg = colors.orange },
-      CmpItemKindField = { fg = colors.blue },
-      CmpItemKindVariable = { fg = colors.red },
-      CmpItemKindClass = { fg = colors.orange },
-      CmpItemKindInterface = { fg = colors.orange },
-      CmpItemKindModule = { fg = colors.blue },
-      CmpItemKindProperty = { fg = colors.red },
-      CmpItemKindUnit = { fg = colors.orange },
-      CmpItemKindValue = { fg = colors.orange },
-      CmpItemKindEnum = { fg = colors.orange },
-      CmpItemKindKeyword = { fg = colors.pink },
-      CmpItemKindSnippet = { fg = colors.green },
-      CmpItemKindColor = { fg = colors.green },
-      CmpItemKindFile = { fg = colors.blue },
-      CmpItemKindReference = { fg = colors.orange },
-      CmpItemKindFolder = { fg = colors.blue },
-      CmpItemKindEnumMember = { fg = colors.aqua },
-      CmpItemKindConstant = { fg = colors.orange },
-      CmpItemKindStruct = { fg = colors.orange },
-      CmpItemKindEvent = { fg = colors.pink },
-      CmpItemKindOperator = { fg = colors.aqua },
-      CmpItemKindTypeParameter = { fg = colors.orange },
-
-      -- LuaSnip
-      LuasnipChoiceNodePassive = { fg = colors.grey },
-      LuasnipChoiceNodeActive = { fg = colors.orange },
-      LuasnipInsertNodePassive = { fg = colors.blue },
-      LuasnipInsertNodeActive = { fg = colors.green },
-
-      -- Indent Blankline
-      IndentBlanklineChar = { fg = colors.indent },
-      IndentBlanklineContextChar = { fg = colors.grey_light },
-
+      -- ================================================================================
       -- TreeSitter Context
-      TreesitterContext = { bg = colors.bg1 },
+      -- ================================================================================
+      TreesitterContext = c.bg1,
       TreesitterContextLineNumber = { fg = colors.grey_light, bg = colors.bg1 },
-      TreesitterContextSeparator = { fg = colors.bg3 },
+      TreesitterContextSeparator = c.bg3,
 
-      -- Comment.nvim
-      CommentNvimComment = { fg = colors.grey },
-
-      -- Toggle Term
-      ToggleTerm1FloatBorder = { fg = colors.bg3, bg = colors.bg },
-      ToggleTermNormal = { bg = colors.bg },
-      ToggleTermBorder = { fg = colors.bg3, bg = colors.bg },
-
-      -- Flash.nvim (additional)
-      FlashMatch = { fg = colors.blue, bg = colors.bg2 },
-      FlashPrompt = { fg = colors.fg, bg = colors.bg },
-
-      -- Oil.nvim
-      OilDir = { fg = colors.blue },
-      OilDirIcon = { fg = colors.blue },
-      OilLink = { fg = colors.aqua },
-      OilLinkTarget = { fg = colors.grey },
-      OilCopy = { fg = colors.orange },
-      OilMove = { fg = colors.pink },
-      OilChange = { fg = colors.orange },
-      OilCreate = { fg = colors.green },
-      OilDelete = { fg = colors.red },
-      OilPermissionNone = { fg = colors.grey },
-      OilPermissionRead = { fg = colors.orange },
-      OilPermissionWrite = { fg = colors.orange },
-      OilPermissionExecute = { fg = colors.red },
-
-      -- Conform.nvim (formatter status)
-      ConformInfo = { fg = colors.blue },
-      ConformError = { fg = colors.red },
-      ConformWarn = { fg = colors.orange },
-
-      -- FZF-lua
-      FzfLuaNormal = { fg = colors.fg, bg = colors.bg },
-      FzfLuaBorder = { fg = colors.fg, bg = colors.bg },
-      -- FzfLuaTitle = { fg = colors.orange },
-      FzfLuaPreviewNormal = { fg = colors.fg, bg = colors.bg },
-      FzfLuaPreviewBorder = { fg = colors.fg, bg = colors.bg },
-      FzfLuaCursor = { fg = colors.bg, bg = colors.fg },
-      FzfLuaCursorLine = { bg = colors.selection },
-
-      -- Which-key
-      WhichKey = { fg = colors.pink },
-      WhichKeyGroup = { fg = colors.blue },
-      WhichKeyDesc = { fg = colors.fg },
-      WhichKeySeparator = { fg = colors.grey },
-      WhichKeyFloat = { bg = colors.bg },
-      WhichKeyBorder = { fg = colors.bg3 },
-
-      -- Notifications
-      NotifyERRORBorder = { fg = colors.red },
-      NotifyWARNBorder = { fg = colors.orange },
-      NotifyINFOBorder = { fg = colors.blue },
-      NotifyDEBUGBorder = { fg = colors.grey },
-      NotifyTRACEBorder = { fg = colors.pink },
-      NotifyERRORIcon = { fg = colors.red },
-      NotifyWARNIcon = { fg = colors.orange },
-      NotifyINFOIcon = { fg = colors.blue },
-      NotifyDEBUGIcon = { fg = colors.grey },
-      NotifyTRACEIcon = { fg = colors.pink },
-      NotifyERRORTitle = { fg = colors.red },
-      NotifyWARNTitle = { fg = colors.orange },
-      NotifyINFOTitle = { fg = colors.blue },
-      NotifyDEBUGTitle = { fg = colors.grey },
-      NotifyTRACETitle = { fg = colors.pink },
-
-      -- Statusline & tabline
-      StatusLine = { fg = colors.fg, bg = colors.bg },
-      StatusLineNC = { fg = colors.grey, bg = colors.bg },
-      TabLine = { fg = colors.grey, bg = colors.bg },
-      TabLineFill = { bg = colors.bg },
-      TabLineSel = { fg = colors.fg, bg = colors.selection },
-
-      -- Multicursor
-      MultiCursor = { fg = colors.bg, bg = colors.pink },
-      MultiCursorVisual = { bg = colors.selection },
-      MultiCursorDisabledCursor = { fg = colors.grey },
-      MultiCursorDisabledVisual = { fg = colors.grey, bg = colors.bg2 },
-
-      -- ++++++++++++++++++++++++++++++++++++++++++++++++++++++
-      -- all of this just for the lazyvim groups... has to be a better way
-
+      -- ================================================================================
       -- Lazy.nvim
-      LazyProgressTodo = { fg = colors.grey },
-      LazyProgressDone = { fg = colors.green },
-      LazyCommit = { fg = colors.green },
-      LazyCommitType = { fg = colors.pink },
-      LazyCommitScope = { fg = colors.blue },
+      -- ================================================================================
+      LazyProgressTodo = c.grey,
+      LazyProgressDone = c.green,
+      LazyCommit = c.green,
+      LazyCommitType = c.pink,
+      LazyCommitScope = c.blue,
 
       -- Reasons
-      LazyReasonPlugin = { fg = colors.red },
-      LazyReasonRuntime = { fg = colors.blue },
-      LazyReasonCmd = { fg = colors.orange },
-      LazyReasonSource = { fg = colors.orange },
-      LazyReasonImport = { fg = colors.pink },
-      LazyReasonFt = { fg = colors.green },
-      LazyReasonEvent = { fg = colors.aqua },
-      LazyReasonKeys = { fg = colors.pink },
-      LazyReasonStart = { fg = colors.orange },
+      LazyReasonPlugin = c.red,
+      LazyReasonRuntime = c.blue,
+      LazyReasonCmd = c.orange,
+      LazyReasonSource = c.orange,
+      LazyReasonImport = c.pink,
+      LazyReasonFt = c.green,
+      LazyReasonEvent = c.aqua,
+      LazyReasonKeys = c.pink,
+      LazyReasonStart = c.orange,
 
       -- Sections / UI
       LazyH1 = { fg = colors.fg, bg = colors.red_dark },
-      LazyH2 = { fg = colors.fg },
-      LazyButton = { bg = colors.bg1 },
-      LazyButtonActive = { bg = colors.selection },
-      LazyComment = { fg = colors.grey },
-      LazyNormal = { fg = colors.fg, bg = colors.bg },
+      LazyH2 = c.fg,
+      LazyButton = c.bg1,
+      LazyButtonActive = c.selection_bg,
+      LazyComment = c.grey,
+      LazyNormal = common.normal,
 
       -- Extras
-      LazySpecial = { fg = colors.red },
-      LazyDir = { fg = colors.blue },
+      LazySpecial = c.red,
+      LazyDir = c.blue,
       LazyUrl = { fg = colors.aqua, underline = true },
-      LazyValue = { fg = colors.green },
-      LazyProp = { fg = colors.grey },
+      LazyValue = c.green,
+      LazyProp = c.grey,
 
-      -- Status indicators (bullets)
-      LazyLocal = { fg = colors.aqua },
-      LazyDimmed = { fg = colors.grey },
-      LazyNotLoaded = { fg = colors.grey },
-      LazyLoaded = { fg = colors.green },
-      LazyTaskOutput = { fg = colors.fg },
-      LazyTaskError = { fg = colors.red },
-      -- ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      -- Status indicators
+      LazyLocal = c.aqua,
+      LazyDimmed = c.grey,
+      LazyNotLoaded = c.grey,
+      LazyLoaded = c.green,
+      LazyTaskOutput = c.fg,
+      LazyTaskError = c.red,
+
+      -- ================================================================================
+      -- GitSigns
+      -- ================================================================================
+      GitSignsAdd = c.green,
+      GitSignsChange = c.blue,
+      GitSignsDelete = c.red,
+      GitSignsAddNr = c.green,
+      GitSignsChangeNr = c.blue,
+      GitSignsDeleteNr = c.red,
+      GitSignsAddLn = c.bg2,
+      GitSignsChangeLn = c.bg2,
+      GitSignsDeleteLn = c.bg2,
+
+      -- ================================================================================
+      -- Diffview
+      -- ================================================================================
+      DiffviewFilePanelTitle = c.blue,
+      DiffviewFilePanelCounter = c.pink,
+      DiffviewFilePanelFileName = c.fg,
+      DiffviewNormal = common.normal,
+      DiffviewCursorLine = common.cursor_line,
+      DiffviewVertSplit = common.vert_split,
+      DiffviewSignColumn = common.sign_column,
+      DiffviewStatusLine = common.status_line,
+      DiffviewStatusLineNC = common.status_line_nc,
+      DiffviewEndOfBuffer = common.end_of_buffer,
+      DiffviewFilePanelRootPath = c.grey,
+      DiffviewFilePanelPath = c.grey,
+      DiffviewFilePanelInsertions = c.green,
+      DiffviewFilePanelDeletions = c.red,
+      DiffviewStatusAdded = c.green,
+      DiffviewStatusUntracked = c.blue,
+      DiffviewStatusModified = c.blue,
+      DiffviewStatusRenamed = c.blue,
+      DiffviewStatusCopied = c.blue,
+      DiffviewStatusTypeChange = c.blue,
+      DiffviewStatusUnmerged = c.blue,
+      DiffviewStatusUnknown = c.red,
+      DiffviewStatusDeleted = c.red,
+      DiffviewStatusBroken = c.red,
+
+      -- ================================================================================
+      -- Neo-tree
+      -- ================================================================================
+      NeoTreeNormal = common.normal,
+      NeoTreeNormalNC = common.normal,
+      NeoTreeDirectoryIcon = c.blue,
+      NeoTreeDirectoryName = c.blue,
+      NeoTreeSymbolicLinkTarget = c.aqua,
+      NeoTreeRootName = c.orange,
+      NeoTreeDotfile = c.grey,
+      NeoTreeFileIcon = c.fg,
+      NeoTreeFileName = c.fg,
+      NeoTreeFileNameOpened = c.fg_light,
+      NeoTreeIndentMarker = c.grey,
+      NeoTreeExpander = c.grey,
+      NeoTreeModified = c.orange,
+      NeoTreeGitAdded = c.green,
+      NeoTreeGitConflict = c.red,
+      NeoTreeGitDeleted = c.red,
+      NeoTreeGitIgnored = c.grey,
+      NeoTreeGitModified = c.orange,
+      NeoTreeGitUnstaged = c.orange,
+      NeoTreeGitUntracked = c.green,
+      NeoTreeGitStaged = c.green,
+
+      -- ================================================================================
+      -- Telescope
+      -- ================================================================================
+      TelescopeNormal = common.normal,
+      TelescopeBorder = { fg = colors.bg3, bg = colors.bg },
+      TelescopePromptNormal = common.normal,
+      TelescopePromptBorder = { fg = colors.bg3, bg = colors.bg },
+      TelescopePromptTitle = c.orange,
+      TelescopeResultsTitle = c.blue,
+      TelescopePreviewTitle = c.green,
+      TelescopeSelection = common.selection,
+      TelescopeSelectionCaret = c.orange,
+      TelescopeMatching = c.blue,
+
+      -- ================================================================================
+      -- Completion menu (nvim-cmp)
+      -- ================================================================================
+      Pmenu = common.menu,
+      PmenuSel = { fg = colors.fg, bg = colors.selection },
+      PmenuSbar = c.grey,
+      PmenuThumb = c.grey_light,
+      CmpItemAbbrDeprecated = { fg = colors.grey, strikethrough = true },
+      CmpItemAbbrMatch = c.blue,
+      CmpItemAbbrMatchFuzzy = c.blue,
+      CmpItemKind = c.pink,
+      CmpItemMenu = c.grey,
+      CmpItemKindText = c.fg,
+      CmpItemKindMethod = c.blue,
+      CmpItemKindFunction = c.blue,
+      CmpItemKindConstructor = c.orange,
+      CmpItemKindField = c.blue,
+      CmpItemKindVariable = c.red,
+      CmpItemKindClass = c.orange,
+      CmpItemKindInterface = c.orange,
+      CmpItemKindModule = c.blue,
+      CmpItemKindProperty = c.red,
+      CmpItemKindUnit = c.orange,
+      CmpItemKindValue = c.orange,
+      CmpItemKindEnum = c.orange,
+      CmpItemKindKeyword = c.pink,
+      CmpItemKindSnippet = c.green,
+      CmpItemKindColor = c.green,
+      CmpItemKindFile = c.blue,
+      CmpItemKindReference = c.orange,
+      CmpItemKindFolder = c.blue,
+      CmpItemKindEnumMember = c.aqua,
+      CmpItemKindConstant = c.orange,
+      CmpItemKindStruct = c.orange,
+      CmpItemKindEvent = c.pink,
+      CmpItemKindOperator = c.aqua,
+      CmpItemKindTypeParameter = c.orange,
+
+      -- ================================================================================
+      -- LuaSnip
+      -- ================================================================================
+      LuasnipChoiceNodePassive = c.grey,
+      LuasnipChoiceNodeActive = c.orange,
+      LuasnipInsertNodePassive = c.blue,
+      LuasnipInsertNodeActive = c.green,
+
+      -- ================================================================================
+      -- Indent Blankline
+      -- ================================================================================
+      IndentBlanklineChar = common.indent_guide,
+      IndentBlanklineContextChar = c.grey_light,
+
+      -- ================================================================================
+      -- Comment.nvim
+      -- ================================================================================
+      CommentNvimComment = c.grey,
+
+      -- ================================================================================
+      -- Toggle Term
+      -- ================================================================================
+      ToggleTerm1FloatBorder = { fg = colors.bg3, bg = colors.bg },
+      ToggleTermNormal = c.bg,
+      ToggleTermBorder = { fg = colors.bg3, bg = colors.bg },
+
+      -- ================================================================================
+      -- Flash.nvim
+      -- ================================================================================
+      FlashCurrent = { fg = colors.bg, bg = colors.red_dark },
+      FlashMatch = { fg = colors.bg, bg = colors.red_dark },
+      FlashLabel = { fg = colors.fg_light, bg = colors.blue_dark },
+
+      -- ================================================================================
+      -- Oil.nvim
+      -- ================================================================================
+      OilDir = c.blue,
+      OilDirIcon = c.blue,
+      OilLink = c.aqua,
+      OilLinkTarget = c.grey,
+      OilCopy = c.orange,
+      OilMove = c.pink,
+      OilChange = c.orange,
+      OilCreate = c.green,
+      OilDelete = c.red,
+      OilPermissionNone = c.grey,
+      OilPermissionRead = c.orange,
+      OilPermissionWrite = c.orange,
+      OilPermissionExecute = c.red,
+
+      -- ================================================================================
+      -- Conform
+      -- ================================================================================
+      ConformInfo = c.blue,
+      ConformError = c.red,
+      ConformWarn = c.orange,
+
+      -- ================================================================================
+      -- FZF-lua
+      -- ================================================================================
+      FzfLuaNormal = common.normal,
+      FzfLuaBorder = { fg = colors.fg, bg = colors.bg },
+      FzfLuaPreviewNormal = common.normal,
+      FzfLuaPreviewBorder = { fg = colors.fg, bg = colors.bg },
+      FzfLuaCursor = { fg = colors.bg, bg = colors.fg },
+      FzfLuaCursorLine = common.selection,
+
+      -- ================================================================================
+      -- Which-key
+      -- ================================================================================
+      WhichKey = c.pink,
+      WhichKeyGroup = c.blue,
+      WhichKeyDesc = c.fg,
+      WhichKeySeparator = c.grey,
+      WhichKeyFloat = c.bg,
+      WhichKeyBorder = c.bg3,
+
+      -- ================================================================================
+      -- Notifications
+      -- ================================================================================
+      NotifyERRORBorder = c.red,
+      NotifyWARNBorder = c.orange,
+      NotifyINFOBorder = c.blue,
+      NotifyDEBUGBorder = c.grey,
+      NotifyTRACEBorder = c.pink,
+      NotifyERRORIcon = c.red,
+      NotifyWARNIcon = c.orange,
+      NotifyINFOIcon = c.blue,
+      NotifyDEBUGIcon = c.grey,
+      NotifyTRACEIcon = c.pink,
+      NotifyERRORTitle = c.red,
+      NotifyWARNTitle = c.orange,
+      NotifyINFOTitle = c.blue,
+      NotifyDEBUGTitle = c.grey,
+      NotifyTRACETitle = c.pink,
+
+      -- ================================================================================
+      -- Statusline & tabline
+      -- ================================================================================
+      StatusLine = common.status_line,
+
+      -- ================================================================================
+      -- Multicursor
+      -- ================================================================================
+      MultiCursor = { fg = colors.bg, bg = colors.pink },
+      MultiCursorVisual = common.selection,
+      MultiCursorDisabledCursor = c.grey,
+      MultiCursorDisabledVisual = { fg = colors.grey, bg = colors.bg2 },
    }
 end
 
