@@ -1,6 +1,19 @@
 # gruvdark.nvim
 
-<img src="https://i.postimg.cc/hjMffFTf/preview.png" width="100%">
+<table width="100%">
+  <tr>
+    <th>Dark</th>
+    <th>Light</th>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img src="https://i.postimg.cc/W2bNMsFH/dark.png" />
+    </td>
+    <td width="50%">
+      <img src="https://i.postimg.cc/cdc1gvH3/light.png" />
+    </td>
+  </tr>
+</table>
 
 ## Installation
 
