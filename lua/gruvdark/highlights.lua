@@ -45,7 +45,6 @@ local function common_highlights(colors)
       end_of_buffer = { fg = colors.bg3 },
       selection = { bg = colors.selection },
       search = { fg = colors.bg, bg = colors.red_dark },
-      menu = { fg = colors.fg, bg = colors.menu },
       column = { bg = colors.column },
       indent_guide = { fg = colors.indent },
    }
@@ -125,7 +124,7 @@ M.setup = function(colors)
       Search = common.search,
       IncSearch = { fg = colors.fg_light, bg = colors.red_dark },
       Substitute = common.search,
-      MatchParen = { fg = colors.fg_light, bg = colors.menu },
+      MatchParen = { fg = colors.fg_light, bg = colors.bg3 },
 
       -- Yank highlighting
       YankHighlight = { fg = colors.fg_light, bg = colors.bg2 },
@@ -156,6 +155,7 @@ M.setup = function(colors)
       Comment = c.grey,
       String = c.green,
       Character = c.green,
+      Constant = c.aqua,
       Number = c.orange,
       Float = c.orange,
       Boolean = c.orange,
@@ -164,11 +164,28 @@ M.setup = function(colors)
       Statement = c.grey,
       Keyword = c.blue,
       Operator = c.blue,
-      Type = c.fg,
+      Type = c.orange,
       Special = c.red,
       Delimiter = c.fg,
       Title = c.orange,
       PreProc = c.pink,
+
+      Structure = c.orange,
+      StorageClass = c.orange,
+      PreCondit = c.pink,
+      Include = c.pink,
+      Define = c.pink,
+      Typedef = c.orange,
+      Exception = c.pink,
+      Conditional = c.pink,
+      Repeat = c.pink,
+      Macro = c.pink,
+      Error = c.pink,
+      Label = c.pink,
+      SpecialChar = c.red,
+      SpecialComment = c.grey,
+      Todo = c.red,
+      Tag = c.green,
 
       -- Standard Vim message highlights
       WarningMsg = c.orange,
@@ -204,7 +221,7 @@ M.setup = function(colors)
       ["@constructor"] = c.aqua,
 
       -- types & constants
-      ["@type"] = c.fg,
+      ["@type"] = c.orange,
       ["@type.builtin"] = c.orange,
       ["@constant"] = c.orange,
       ["@constant.builtin"] = c.orange,
@@ -247,15 +264,27 @@ M.setup = function(colors)
       ["@property.json"] = c.red,
 
       -- JavasCript/TypesCript specific
+      ["@tag.javascript"] = c.aqua,
+      ["@type.javascript"] = c.fg,
+      ["@constant.javascript"] = c.fg,
+      ["@lsp.type.class.javascript"] = c.aqua,
+
+      ["@type.tsx"] = c.fg,
+      ["@type.typescript"] = c.fg,
+      ["@constant.typescript"] = c.fg,
+      ["@keyword.directive.typescript"] = c.green,
+
       ["@lsp.typemod.function.defaultLibrary"] = c.red,
-      ["@lsp.typemod.property.declaration.typescript"] = c.fg,
-      ["@lsp.typemod.property.defaultLibrary.typescript"] = c.orange,
-      ["@lsp.typemod.variable.defaultLibrary.typescript"] = c.orange,
-      ["@lsp.typemod.variable.defaultLibrary.typescriptreact"] = c.orange,
+
       ["@lsp.typemod.property.declaration.javascript"] = c.fg,
       ["@lsp.typemod.property.defaultLibrary.javascript"] = c.orange,
       ["@lsp.typemod.variable.defaultLibrary.javascript"] = c.orange,
       ["@lsp.typemod.variable.defaultLibrary.javascriptreact"] = c.orange,
+
+      ["@lsp.typemod.property.declaration.typescript"] = c.fg,
+      ["@lsp.typemod.property.defaultLibrary.typescript"] = c.orange,
+      ["@lsp.typemod.variable.defaultLibrary.typescript"] = c.orange,
+      ["@lsp.typemod.variable.defaultLibrary.typescriptreact"] = c.orange,
 
       -- Lua specific
       ["@constructor.lua"] = c.fg,
@@ -274,11 +303,13 @@ M.setup = function(colors)
       ["@markup.heading.4.markdown"] = c.red,
       ["@markup.heading.5.markdown"] = c.red,
       ["@markup.heading.6.markdown"] = c.red,
+
       ["@markup.heading.html"] = c.orange,
       ["@markup.raw.block.markdown"] = c.green,
       ["@markup.link.markdown_inline"] = c.fg,
       ["@markup.link.label.markdown_inline"] = c.blue,
       ["@markup.link.url.markdown_inline"] = { fg = colors.aqua, underline = true },
+      ["@label.markdown"] = c.grey,
 
       -- More specific diff treesitter nodes
       ["@diff.plus"] = c.green,
@@ -297,6 +328,7 @@ M.setup = function(colors)
 
       -- Others
       markdownLinkText = c.blue,
+      ["@punctuation.special"] = c.red,
 
       -- ================================================================================
       -- TreeSitter Context
