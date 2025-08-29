@@ -1,1 +1,23 @@
-# Missing
+export FZF_DEFAULT_OPTS="
+  --ansi
+  --layout=reverse
+  --border=none
+  --highlight-line
+  --info=inline-right
+  --color=fg:#111111
+  --color=fg+:#000000
+  --color=bg:#F7F5EA
+  --color=bg+:#B0B0A6
+  --color=gutter:-1
+  --color=prompt:#1E5A8B
+  --color=marker:#7A0101
+  --color=pointer:#7A0101
+  --color=header:#AE5F05
+  --color=info:#707070
+  --color=hl:#006C00
+  --color=hl+:#006C00
+  --color=query:#111111
+  --color=scrollbar:#707070
+  --color=separator:#707070
+"
+
