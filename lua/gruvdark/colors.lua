@@ -27,31 +27,32 @@ M.palettes = {
 
       -- Special
       selection = "#303030",
-      menu = "#454545",
       column = "#232323",
       indent = "#323232",
       status_line = "#252525",
       none = "NONE",
+
+      -- Diff
+      diff_add = "#31392b",
+      diff_delete = "#382b2c",
+      diff_change = "#1c3448",
+      diff_text = "#2c5372",
    },
 
    gruvdark_light = {
       -- Base
       fg = "#D6CFC4",
       fg_light = "#E6E3DE",
-
       blue = "#579DD4",
+      blue_dark = "#2A404F",
       red = "#E16464",
+      red_dark = "#B55353",
       green = "#72BA62",
       pink = "#D159B6",
       purple = "#9266DA",
       aqua = "#00A596",
       orange = "#D19F66",
       grey = "#575757",
-
-      -- Variant
-      blue_dark = "#2A404F",
-      red_dark = "#B55353",
-
       grey_light = "#9D9A94",
 
       -- Background
@@ -62,12 +63,18 @@ M.palettes = {
       bg4 = "#424242",
       bg5 = "#323232",
 
-      -- Extra
-      cursor_line = "NONE",
+      -- Special
       selection = "#303030",
-      menu = "#454545",
       column = "#232323",
       indent = "#323232",
+      status_line = "#252525",
+      none = "NONE",
+
+      -- Diff
+      diff_add = "#31392b",
+      diff_delete = "#382b2c",
+      diff_change = "#1c3448",
+      diff_text = "#2c5372",
    },
 }
 

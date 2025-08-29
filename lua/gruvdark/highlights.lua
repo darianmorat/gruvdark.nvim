@@ -26,7 +26,6 @@ local function color_shortcuts(colors)
       bg5 = { bg = colors.bg5 },
 
       -- Special
-      menu_bg = { bg = colors.menu },
       column_bg = { bg = colors.column },
       indent_bg = { bg = colors.indent },
       status_line_bg = { bg = colors.status_line },
@@ -56,7 +55,45 @@ M.setup = function(colors)
    local common = common_highlights(colors)
    local c = color_shortcuts(colors)
 
-   return {
+   local lsp_kind_icons_color = {
+      Default = c.pink,
+      Array = c.orange,
+      Boolean = c.orange,
+      Class = c.aqua,
+      Color = c.green,
+      Constant = c.orange,
+      Constructor = c.blue,
+      Enum = c.pink,
+      EnumMember = c.orange,
+      Event = c.orange,
+      Field = c.pink,
+      File = c.blue,
+      Folder = c.orange,
+      Function = c.red,
+      Interface = c.green,
+      Key = c.aqua,
+      Keyword = c.blue,
+      Method = c.red,
+      Module = c.orange,
+      Namespace = c.aqua,
+      Null = c.grey,
+      Number = c.orange,
+      Object = c.aqua,
+      Operator = c.blue,
+      Package = c.orange,
+      Property = c.purple,
+      Reference = c.orange,
+      Snippet = c.green,
+      String = c.green,
+      Struct = c.pink,
+      Text = c.fg,
+      TypeParameter = c.red,
+      Unit = c.green,
+      Value = c.orange,
+      Variable = c.fg,
+   }
+
+   local highlights = {
       -- ================================================================================
       -- BASE GROUPS
       -- ================================================================================
@@ -70,6 +107,7 @@ M.setup = function(colors)
       CursorLine = common.cursor_line,
       CursorColumn = common.column,
       Visual = common.visual,
+      VisualNOS = { fg = colors.none, bg = colors.bg2, underline = true },
 
       -- Line numbers & columns
       LineNr = c.grey,
@@ -80,7 +118,7 @@ M.setup = function(colors)
 
       -- Window elements
       WinSeparator = common.vert_split,
-      Folded = { fg = colors.fg, bg = colors.bg2 },
+      Folded = { fg = colors.fg, bg = colors.bg1 },
       FoldColumn = { fg = colors.grey, bg = colors.bg },
 
       -- Search & matching
@@ -89,12 +127,28 @@ M.setup = function(colors)
       Substitute = common.search,
       MatchParen = { fg = colors.fg_light, bg = colors.menu },
 
-      -- Indentation
-      IblIndent = common.indent_guide,
-      IblScope = c.grey_light,
-
       -- Yank highlighting
       YankHighlight = { fg = colors.fg_light, bg = colors.bg2 },
+
+      -- Extras
+      QuickFixLine = { fg = colors.blue, underline = true },
+      FloatBorder = { fg = colors.bg3, bg = colors.bg },
+      Terminal = common.normal,
+      Conceal = { fg = colors.grey, bg = colors.bg1 },
+
+      -- Completion menus
+      Pmenu = { fg = colors.none, bg = colors.bg3 },
+      PmenuSel = { fg = colors.none, bg = colors.bg4 },
+      PmenuSbar = { fg = colors.none, bg = colors.bg4 },
+      PmenuThumb = { fg = colors.none, bg = colors.grey },
+
+      -- Statusline & tabline
+      StatusLine = common.status_line,
+      StatusLineNC = common.status_line_nc,
+
+      TabLine = common.status_line,
+      TabLineFill = common.status_line,
+      TabLineSel = { fg = colors.fg, bg = colors.grey },
 
       -- ================================================================================
       -- SYNTAX HIGHLIGHTING
@@ -114,6 +168,7 @@ M.setup = function(colors)
       Special = c.red,
       Delimiter = c.fg,
       Title = c.orange,
+      PreProc = c.pink,
 
       -- Standard Vim message highlights
       WarningMsg = c.orange,
@@ -183,21 +238,34 @@ M.setup = function(colors)
       ["@constant.css"] = c.red,
       ["@type.css"] = c.red,
       ["@attribute.css"] = c.red,
-      ["@property.css"] = c.blue,
       ["@keyword.css"] = c.red,
+      ["@property.css"] = c.blue,
       ["@keyword.directive.css"] = c.pink,
       ["@keyword.modifier.css"] = c.pink,
-      ["@string.css"] = c.green,
-      ["@punctuation.delimiter.css"] = c.grey_light,
 
       -- JSON specific
       ["@property.json"] = c.red,
 
+      -- JavasCript/TypesCript specific
+      ["@lsp.typemod.function.defaultLibrary"] = c.red,
+      ["@lsp.typemod.property.declaration.typescript"] = c.fg,
+      ["@lsp.typemod.property.defaultLibrary.typescript"] = c.orange,
+      ["@lsp.typemod.variable.defaultLibrary.typescript"] = c.orange,
+      ["@lsp.typemod.variable.defaultLibrary.typescriptreact"] = c.orange,
+      ["@lsp.typemod.property.declaration.javascript"] = c.fg,
+      ["@lsp.typemod.property.defaultLibrary.javascript"] = c.orange,
+      ["@lsp.typemod.variable.defaultLibrary.javascript"] = c.orange,
+      ["@lsp.typemod.variable.defaultLibrary.javascriptreact"] = c.orange,
+
       -- Lua specific
       ["@constructor.lua"] = c.fg,
-      ["@keyword.operator.lua"] = c.blue,
       ["@module.builtin.lua"] = c.aqua,
       ["@property.lua"] = c.fg,
+      ["@keyword.luadoc"] = c.pink,
+
+      -- Java specific
+      ["@type.java"] = c.aqua,
+      ["@keyword.type.java"] = c.orange,
 
       -- Markdown
       ["@markup.heading.1.markdown"] = c.red,
@@ -211,7 +279,31 @@ M.setup = function(colors)
       ["@markup.link.markdown_inline"] = c.fg,
       ["@markup.link.label.markdown_inline"] = c.blue,
       ["@markup.link.url.markdown_inline"] = { fg = colors.aqua, underline = true },
+
+      -- More specific diff treesitter nodes
+      ["@diff.plus"] = c.green,
+      ["@diff.minus"] = c.red,
+      ["@diff.delta"] = c.blue,
+
+      -- Markup treesitter nodes
+      ["@markup.emphasis"] = { fg = colors.fg, italic = true },
+      ["@markup.strong"] = { fg = colors.fg, bold = true },
+      ["@markup.underline"] = { fg = colors.fg, underline = true },
+      ["@markup.strike"] = { fg = colors.fg, strikethrough = true },
+      ["@markup.math"] = c.fg,
+      ["@markup.environment"] = c.fg,
+      ["@markup.environment.name"] = c.fg,
+      ["@markup.list"] = c.red,
+
+      -- Others
       markdownLinkText = c.blue,
+
+      -- ================================================================================
+      -- TreeSitter Context
+      -- ================================================================================
+      TreesitterContext = c.bg1,
+      TreesitterContextLineNumber = { fg = colors.grey_light, bg = colors.bg1 },
+      TreesitterContextSeparator = c.bg3,
 
       -- ================================================================================
       -- LSP Context
@@ -245,12 +337,60 @@ M.setup = function(colors)
       DiagnosticUnderlineInfo = { sp = colors.blue, undercurl = true },
       DiagnosticUnderlineHint = { sp = colors.pink, undercurl = true },
 
+      -- Debug
+      Debug = c.orange,
+      debugPC = { fg = colors.bg, bg = colors.green },
+      debugBreakpoint = { fg = colors.bg, bg = colors.red },
+
       -- ================================================================================
-      -- TreeSitter Context
+      -- Diffview
       -- ================================================================================
-      TreesitterContext = c.bg1,
-      TreesitterContextLineNumber = { fg = colors.grey_light, bg = colors.bg1 },
-      TreesitterContextSeparator = c.bg3,
+      DiffviewFilePanelTitle = c.blue,
+      DiffviewFilePanelCounter = c.pink,
+      DiffviewFilePanelFileName = c.fg,
+      DiffviewNormal = common.normal,
+      DiffviewCursorLine = common.cursor_line,
+      DiffviewVertSplit = common.vert_split,
+      DiffviewSignColumn = common.sign_column,
+      DiffviewStatusLine = common.status_line,
+      DiffviewStatusLineNC = common.status_line_nc,
+      DiffviewEndOfBuffer = common.end_of_buffer,
+      DiffviewFilePanelRootPath = c.grey,
+      DiffviewFilePanelPath = c.grey,
+      DiffviewFilePanelInsertions = c.green,
+      DiffviewFilePanelDeletions = c.red,
+      DiffviewStatusAdded = c.green,
+      DiffviewStatusUntracked = c.blue,
+      DiffviewStatusModified = c.blue,
+      DiffviewStatusRenamed = c.blue,
+      DiffviewStatusCopied = c.blue,
+      DiffviewStatusTypeChange = c.blue,
+      DiffviewStatusUnmerged = c.blue,
+      DiffviewStatusUnknown = c.red,
+      DiffviewStatusDeleted = c.red,
+      DiffviewStatusBroken = c.red,
+
+      Added = c.green,
+      Removed = c.red,
+      Changed = c.blue,
+      DiffAdd = { fg = colors.none, bg = colors.diff_add },
+      DiffDelete = { fg = colors.none, bg = colors.diff_delete },
+      DiffChange = { fg = colors.none, bg = colors.diff_change },
+      DiffText = { fg = colors.none, bg = colors.diff_text },
+      DiffAdded = c.green,
+      DiffChanged = c.blue,
+      DiffRemoved = c.red,
+      DiffDeleted = c.red,
+      DiffFile = c.aqua,
+      DiffIndexLine = c.grey,
+
+      -- ================================================================================
+      -- Spell checking
+      -- ================================================================================
+      SpellBad = { fg = colors.none, sp = colors.red, undercurl = true },
+      SpellCap = { fg = colors.none, sp = colors.orange, undercurl = true },
+      SpellLocal = { fg = colors.none, sp = colors.blue, undercurl = true },
+      SpellRare = { fg = colors.none, sp = colors.pink, undercurl = true },
 
       -- ================================================================================
       -- Lazy.nvim
@@ -296,6 +436,13 @@ M.setup = function(colors)
       LazyTaskError = c.red,
 
       -- ================================================================================
+      -- Conform
+      -- ================================================================================
+      ConformInfo = c.blue,
+      ConformError = c.red,
+      ConformWarn = c.orange,
+
+      -- ================================================================================
       -- GitSigns
       -- ================================================================================
       GitSignsAdd = c.green,
@@ -309,32 +456,167 @@ M.setup = function(colors)
       GitSignsDeleteLn = c.bg2,
 
       -- ================================================================================
-      -- Diffview
+      -- FZF-lua
       -- ================================================================================
-      DiffviewFilePanelTitle = c.blue,
-      DiffviewFilePanelCounter = c.pink,
-      DiffviewFilePanelFileName = c.fg,
-      DiffviewNormal = common.normal,
-      DiffviewCursorLine = common.cursor_line,
-      DiffviewVertSplit = common.vert_split,
-      DiffviewSignColumn = common.sign_column,
-      DiffviewStatusLine = common.status_line,
-      DiffviewStatusLineNC = common.status_line_nc,
-      DiffviewEndOfBuffer = common.end_of_buffer,
-      DiffviewFilePanelRootPath = c.grey,
-      DiffviewFilePanelPath = c.grey,
-      DiffviewFilePanelInsertions = c.green,
-      DiffviewFilePanelDeletions = c.red,
-      DiffviewStatusAdded = c.green,
-      DiffviewStatusUntracked = c.blue,
-      DiffviewStatusModified = c.blue,
-      DiffviewStatusRenamed = c.blue,
-      DiffviewStatusCopied = c.blue,
-      DiffviewStatusTypeChange = c.blue,
-      DiffviewStatusUnmerged = c.blue,
-      DiffviewStatusUnknown = c.red,
-      DiffviewStatusDeleted = c.red,
-      DiffviewStatusBroken = c.red,
+      -- FzfLuaNormal = common.normal,
+      -- FzfLuaBorder = { fg = colors.fg, bg = colors.bg },
+      -- FzfLuaPreviewNormal = common.normal,
+      -- FzfLuaPreviewBorder = { fg = colors.fg, bg = colors.bg },
+      -- FzfLuaCursor = { fg = colors.bg, bg = colors.fg },
+      -- FzfLuaCursorLine = common.selection,
+
+      -- ================================================================================
+      -- Telescope
+      -- ================================================================================
+      -- TelescopeNormal = common.normal,
+      -- TelescopeBorder = { fg = colors.fg, bg = colors.bg },
+      -- TelescopePromptNormal = common.normal,
+      -- TelescopePromptBorder = { fg = colors.bg3, bg = colors.bg },
+      -- TelescopePromptTitle = c.orange,
+      -- TelescopeResultsTitle = c.blue,
+      -- TelescopePreviewTitle = c.green,
+      -- TelescopeSelection = common.selection,
+      -- TelescopeSelectionCaret = c.orange,
+      -- TelescopeMatching = c.blue,
+
+      -- ================================================================================
+      -- Blink-cmp
+      -- ================================================================================
+      BlinkCmpMenu = { fg = colors.fg, bg = colors.bg3 },
+      BlinkCmpMenuBorder = { fg = colors.fg, bg = colors.bg3 },
+      BlinkCmpDoc = { fg = colors.fg, bg = colors.bg5 },
+      BlinkCmpDocBorder = { fg = colors.fg, bg = colors.bg5 },
+      BlinkCmpDocSeparator = { fg = colors.fg, bg = colors.bg5 },
+      BlinkCmpScrollBarThumb = { bg = colors.grey },
+      BlinkCmpScrollBarGutter = { bg = colors.bg2 },
+      BlinkCmpLabelMatch = { fg = colors.green },
+
+      -- ================================================================================
+      -- Nvim-cmp
+      -- ================================================================================
+      -- CmpItemAbbrDeprecated = { fg = colors.grey, strikethrough = true },
+      -- CmpItemAbbrMatch = c.blue,
+      -- CmpItemAbbrMatchFuzzy = c.blue,
+      -- CmpItemKind = c.pink,
+      -- CmpItemMenu = c.grey,
+      -- CmpItemKindText = c.fg,
+      -- CmpItemKindMethod = c.blue,
+      -- CmpItemKindFunction = c.blue,
+      -- CmpItemKindConstructor = c.orange,
+      -- CmpItemKindField = c.blue,
+      -- CmpItemKindVariable = c.red,
+      -- CmpItemKindClass = c.orange,
+      -- CmpItemKindInterface = c.orange,
+      -- CmpItemKindModule = c.blue,
+      -- CmpItemKindProperty = c.red,
+      -- CmpItemKindUnit = c.orange,
+      -- CmpItemKindValue = c.orange,
+      -- CmpItemKindEnum = c.orange,
+      -- CmpItemKindKeyword = c.pink,
+      -- CmpItemKindSnippet = c.green,
+      -- CmpItemKindColor = c.green,
+      -- CmpItemKindFile = c.blue,
+      -- CmpItemKindReference = c.orange,
+      -- CmpItemKindFolder = c.blue,
+      -- CmpItemKindEnumMember = c.aqua,
+      -- CmpItemKindConstant = c.orange,
+      -- CmpItemKindStruct = c.orange,
+      -- CmpItemKindEvent = c.pink,
+      -- CmpItemKindOperator = c.aqua,
+      -- CmpItemKindTypeParameter = c.orange,
+
+      -- ================================================================================
+      -- LuaSnip
+      -- ================================================================================
+      LuasnipChoiceNodePassive = c.grey,
+      LuasnipChoiceNodeActive = c.orange,
+      LuasnipInsertNodePassive = c.blue,
+      LuasnipInsertNodeActive = c.green,
+
+      -- ================================================================================
+      -- Flash.nvim
+      -- ================================================================================
+      FlashCurrent = { fg = colors.bg, bg = colors.red_dark },
+      FlashMatch = { fg = colors.bg, bg = colors.red_dark },
+      FlashLabel = { fg = colors.fg_light, bg = colors.blue_dark },
+
+      -- ================================================================================
+      -- Indent Blankline
+      -- ================================================================================
+      IndentBlanklineChar = common.indent_guide,
+      IndentBlanklineContextChar = c.grey_light,
+
+      -- ================================================================================
+      -- Comment.nvim
+      -- ================================================================================
+      CommentNvimComment = c.grey,
+
+      -- ================================================================================
+      -- Toggle Term
+      -- ================================================================================
+      ToggleTerm1FloatBorder = { fg = colors.bg3, bg = colors.bg },
+      ToggleTermNormal = c.bg,
+      ToggleTermBorder = { fg = colors.bg3, bg = colors.bg },
+
+      -- ================================================================================
+      -- Oil.nvim
+      -- ================================================================================
+      OilDir = c.blue,
+      OilDirIcon = c.blue,
+      OilLink = c.aqua,
+      OilLinkTarget = c.grey,
+      OilCopy = c.orange,
+      OilMove = c.pink,
+      OilChange = c.orange,
+      OilCreate = c.green,
+      OilDelete = c.red,
+      OilPermissionNone = c.grey,
+      OilPermissionRead = c.orange,
+      OilPermissionWrite = c.orange,
+      OilPermissionExecute = c.red,
+
+      -- ================================================================================
+      -- Indentation
+      -- ================================================================================
+      IblIndent = common.indent_guide,
+      IblScope = c.grey_light,
+
+      -- ================================================================================
+      -- Multicursor
+      -- ================================================================================
+      -- MultiCursor = { fg = colors.bg, bg = colors.pink },
+      -- MultiCursorVisual = common.selection,
+      -- MultiCursorDisabledCursor = c.grey,
+      -- MultiCursorDisabledVisual = { fg = colors.grey, bg = colors.bg2 },
+
+      -- ================================================================================
+      -- Which-key
+      -- ================================================================================
+      -- WhichKey = c.pink,
+      -- WhichKeyGroup = c.blue,
+      -- WhichKeyDesc = c.fg,
+      -- WhichKeySeparator = c.grey,
+      -- WhichKeyFloat = c.bg,
+      -- WhichKeyBorder = c.bg3,
+
+      -- ================================================================================
+      -- Notifications
+      -- ================================================================================
+      NotifyERRORBorder = c.red,
+      NotifyWARNBorder = c.orange,
+      NotifyINFOBorder = c.blue,
+      NotifyDEBUGBorder = c.grey,
+      NotifyTRACEBorder = c.pink,
+      NotifyERRORIcon = c.red,
+      NotifyWARNIcon = c.orange,
+      NotifyINFOIcon = c.blue,
+      NotifyDEBUGIcon = c.grey,
+      NotifyTRACEIcon = c.pink,
+      NotifyERRORTitle = c.red,
+      NotifyWARNTitle = c.orange,
+      NotifyINFOTitle = c.blue,
+      NotifyDEBUGTitle = c.grey,
+      NotifyTRACETitle = c.pink,
 
       -- ================================================================================
       -- Neo-tree
@@ -360,168 +642,14 @@ M.setup = function(colors)
       NeoTreeGitUnstaged = c.orange,
       NeoTreeGitUntracked = c.green,
       NeoTreeGitStaged = c.green,
-
-      -- ================================================================================
-      -- Telescope
-      -- ================================================================================
-      TelescopeNormal = common.normal,
-      TelescopeBorder = { fg = colors.bg3, bg = colors.bg },
-      TelescopePromptNormal = common.normal,
-      TelescopePromptBorder = { fg = colors.bg3, bg = colors.bg },
-      TelescopePromptTitle = c.orange,
-      TelescopeResultsTitle = c.blue,
-      TelescopePreviewTitle = c.green,
-      TelescopeSelection = common.selection,
-      TelescopeSelectionCaret = c.orange,
-      TelescopeMatching = c.blue,
-
-      -- ================================================================================
-      -- Completion menu (nvim-cmp)
-      -- ================================================================================
-      Pmenu = common.menu,
-      PmenuSel = { fg = colors.fg, bg = colors.selection },
-      PmenuSbar = c.grey,
-      PmenuThumb = c.grey_light,
-      CmpItemAbbrDeprecated = { fg = colors.grey, strikethrough = true },
-      CmpItemAbbrMatch = c.blue,
-      CmpItemAbbrMatchFuzzy = c.blue,
-      CmpItemKind = c.pink,
-      CmpItemMenu = c.grey,
-      CmpItemKindText = c.fg,
-      CmpItemKindMethod = c.blue,
-      CmpItemKindFunction = c.blue,
-      CmpItemKindConstructor = c.orange,
-      CmpItemKindField = c.blue,
-      CmpItemKindVariable = c.red,
-      CmpItemKindClass = c.orange,
-      CmpItemKindInterface = c.orange,
-      CmpItemKindModule = c.blue,
-      CmpItemKindProperty = c.red,
-      CmpItemKindUnit = c.orange,
-      CmpItemKindValue = c.orange,
-      CmpItemKindEnum = c.orange,
-      CmpItemKindKeyword = c.pink,
-      CmpItemKindSnippet = c.green,
-      CmpItemKindColor = c.green,
-      CmpItemKindFile = c.blue,
-      CmpItemKindReference = c.orange,
-      CmpItemKindFolder = c.blue,
-      CmpItemKindEnumMember = c.aqua,
-      CmpItemKindConstant = c.orange,
-      CmpItemKindStruct = c.orange,
-      CmpItemKindEvent = c.pink,
-      CmpItemKindOperator = c.aqua,
-      CmpItemKindTypeParameter = c.orange,
-
-      -- ================================================================================
-      -- LuaSnip
-      -- ================================================================================
-      LuasnipChoiceNodePassive = c.grey,
-      LuasnipChoiceNodeActive = c.orange,
-      LuasnipInsertNodePassive = c.blue,
-      LuasnipInsertNodeActive = c.green,
-
-      -- ================================================================================
-      -- Indent Blankline
-      -- ================================================================================
-      IndentBlanklineChar = common.indent_guide,
-      IndentBlanklineContextChar = c.grey_light,
-
-      -- ================================================================================
-      -- Comment.nvim
-      -- ================================================================================
-      CommentNvimComment = c.grey,
-
-      -- ================================================================================
-      -- Toggle Term
-      -- ================================================================================
-      ToggleTerm1FloatBorder = { fg = colors.bg3, bg = colors.bg },
-      ToggleTermNormal = c.bg,
-      ToggleTermBorder = { fg = colors.bg3, bg = colors.bg },
-
-      -- ================================================================================
-      -- Flash.nvim
-      -- ================================================================================
-      FlashCurrent = { fg = colors.bg, bg = colors.red_dark },
-      FlashMatch = { fg = colors.bg, bg = colors.red_dark },
-      FlashLabel = { fg = colors.fg_light, bg = colors.blue_dark },
-
-      -- ================================================================================
-      -- Oil.nvim
-      -- ================================================================================
-      OilDir = c.blue,
-      OilDirIcon = c.blue,
-      OilLink = c.aqua,
-      OilLinkTarget = c.grey,
-      OilCopy = c.orange,
-      OilMove = c.pink,
-      OilChange = c.orange,
-      OilCreate = c.green,
-      OilDelete = c.red,
-      OilPermissionNone = c.grey,
-      OilPermissionRead = c.orange,
-      OilPermissionWrite = c.orange,
-      OilPermissionExecute = c.red,
-
-      -- ================================================================================
-      -- Conform
-      -- ================================================================================
-      ConformInfo = c.blue,
-      ConformError = c.red,
-      ConformWarn = c.orange,
-
-      -- ================================================================================
-      -- FZF-lua
-      -- ================================================================================
-      FzfLuaNormal = common.normal,
-      FzfLuaBorder = { fg = colors.fg, bg = colors.bg },
-      FzfLuaPreviewNormal = common.normal,
-      FzfLuaPreviewBorder = { fg = colors.fg, bg = colors.bg },
-      FzfLuaCursor = { fg = colors.bg, bg = colors.fg },
-      FzfLuaCursorLine = common.selection,
-
-      -- ================================================================================
-      -- Which-key
-      -- ================================================================================
-      WhichKey = c.pink,
-      WhichKeyGroup = c.blue,
-      WhichKeyDesc = c.fg,
-      WhichKeySeparator = c.grey,
-      WhichKeyFloat = c.bg,
-      WhichKeyBorder = c.bg3,
-
-      -- ================================================================================
-      -- Notifications
-      -- ================================================================================
-      NotifyERRORBorder = c.red,
-      NotifyWARNBorder = c.orange,
-      NotifyINFOBorder = c.blue,
-      NotifyDEBUGBorder = c.grey,
-      NotifyTRACEBorder = c.pink,
-      NotifyERRORIcon = c.red,
-      NotifyWARNIcon = c.orange,
-      NotifyINFOIcon = c.blue,
-      NotifyDEBUGIcon = c.grey,
-      NotifyTRACEIcon = c.pink,
-      NotifyERRORTitle = c.red,
-      NotifyWARNTitle = c.orange,
-      NotifyINFOTitle = c.blue,
-      NotifyDEBUGTitle = c.grey,
-      NotifyTRACETitle = c.pink,
-
-      -- ================================================================================
-      -- Statusline & tabline
-      -- ================================================================================
-      StatusLine = common.status_line,
-
-      -- ================================================================================
-      -- Multicursor
-      -- ================================================================================
-      MultiCursor = { fg = colors.bg, bg = colors.pink },
-      MultiCursorVisual = common.selection,
-      MultiCursorDisabledCursor = c.grey,
-      MultiCursorDisabledVisual = { fg = colors.grey, bg = colors.bg2 },
    }
+
+   for kind, color in pairs(lsp_kind_icons_color) do
+      highlights["CmpItemKind" .. kind] = { fg = color.fg }
+      highlights["BlinkCmpKind" .. kind] = { fg = color.fg }
+   end
+
+   return highlights
 end
 
 return M
