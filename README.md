@@ -1,14 +1,20 @@
 # gruvdark.nvim
 
+Professional and balanced colorscheme
+
 <table width="100%">
   <tr>
-    <th>Dark</th>
-    <th>Light</th>
+    <th>GruvDark</th>
   </tr>
   <tr>
     <td width="50%">
       <img src="https://i.postimg.cc/W2bNMsFH/dark.png" />
     </td>
+  </tr>
+  <tr>
+    <th>GruvDark-Light</th>
+  </tr>
+  <tr>
     <td width="50%">
       <img src="https://i.postimg.cc/cdc1gvH3/light.png" />
     </td>
@@ -28,17 +34,25 @@ Using [Lazy.nvim](https://github.com/folke/lazy.nvim)
 }
 ```
 
+## Usage
+
 Enable the colorscheme:
 
 ```lua
 vim.cmd.colorscheme("gruvdark")
+-- or
+vim.cmd.colorscheme("gruvdark-light")
 ```
 
 ## Configuration
 
+Additional settings for gruvdark are:
+
 ```lua
+-- Default options:
+
 opts = {
-   transparent = false, -- Show/hide background
+   transparent = false, -- Show or hide background
    colors = {}, -- Override default colors
    highlights = {}, -- Override highlight groups
 },
