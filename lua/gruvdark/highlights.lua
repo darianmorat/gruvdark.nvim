@@ -1,4 +1,5 @@
 local M = {}
+local util = require("gruvdark.util")
 
 local function color_shortcuts(colors)
    return {
@@ -24,12 +25,6 @@ local function color_shortcuts(colors)
       bg3 = { bg = colors.bg3 },
       bg4 = { bg = colors.bg4 },
       bg5 = { bg = colors.bg5 },
-
-      -- Special
-      column_bg = { bg = colors.column },
-      indent_bg = { bg = colors.indent },
-      status_line_bg = { bg = colors.status_line },
-      selection_bg = { bg = colors.selection },
    }
 end
 
@@ -46,7 +41,6 @@ local function common_highlights(colors)
       selection = { bg = colors.selection },
       search = { fg = colors.bg, bg = colors.red_dark },
       column = { bg = colors.column },
-      indent_guide = { fg = colors.indent },
    }
 end
 
@@ -97,6 +91,7 @@ M.setup = function(colors)
       -- BASE GROUPS
       -- ================================================================================
       Normal = common.normal,
+      NormalNC = common.normal,
       NormalFloat = common.normal,
       MsgArea = common.normal,
 
@@ -130,9 +125,9 @@ M.setup = function(colors)
       YankHighlight = { fg = colors.fg_light, bg = colors.bg2 },
 
       -- Extras
-      QuickFixLine = { fg = colors.blue, underline = true },
-      FloatBorder = { fg = colors.bg3, bg = colors.bg },
       Terminal = common.normal,
+      QuickFixLine = { fg = colors.blue, underline = true },
+      FloatBorder = { fg = colors.fg, bg = colors.bg },
       Conceal = { fg = colors.grey, bg = colors.bg1 },
 
       -- Completion menus
@@ -360,14 +355,32 @@ M.setup = function(colors)
       DiagnosticHint = c.pink,
       DiagnosticOk = c.green,
 
-      DiagnosticVirtualTextError = { fg = colors.red, bg = colors.bg },
-      DiagnosticVirtualTextWarn = { fg = colors.orange, bg = colors.bg },
-      DiagnosticVirtualTextInfo = { fg = colors.blue, bg = colors.bg },
-      DiagnosticVirtualTextHint = { fg = colors.pink, bg = colors.bg },
+      DiagnosticVirtualTextError = {
+         bg = util.darken(colors.red, 0.1, colors.bg),
+         fg = colors.red,
+      },
+      DiagnosticVirtualTextWarn = {
+         bg = util.darken(colors.orange, 0.1, colors.bg),
+         fg = colors.orange,
+      },
+      DiagnosticVirtualTextInfo = {
+         bg = util.darken(colors.aqua, 0.1, colors.bg),
+         fg = colors.aqua,
+      },
+      DiagnosticVirtualTextHint = {
+         bg = util.darken(colors.pink, 0.1, colors.bg),
+         fg = colors.pink,
+      },
+
       DiagnosticUnderlineError = { sp = colors.red, undercurl = true },
       DiagnosticUnderlineWarn = { sp = colors.orange, undercurl = true },
       DiagnosticUnderlineInfo = { sp = colors.blue, undercurl = true },
       DiagnosticUnderlineHint = { sp = colors.pink, undercurl = true },
+
+      DiagnosticSignError = { fg = colors.red, bg = colors.bg },
+      DiagnosticSignWarn = { fg = colors.orange, bg = colors.bg },
+      DiagnosticSignInfo = { fg = colors.blue, bg = colors.bg },
+      DiagnosticSignHint = { fg = colors.pink, bg = colors.bg },
 
       -- Debug
       Debug = c.orange,
@@ -448,7 +461,7 @@ M.setup = function(colors)
       LazyH1 = { fg = colors.fg, bg = colors.red_dark },
       LazyH2 = c.fg,
       LazyButton = { bg = colors.none },
-      LazyButtonActive = c.selection_bg,
+      LazyButtonActive = { bg = colors.selection },
       LazyComment = c.grey,
       LazyNormal = common.normal,
 
@@ -490,26 +503,16 @@ M.setup = function(colors)
       -- ================================================================================
       -- FZF-lua
       -- ================================================================================
-      -- FzfLuaNormal = common.normal,
-      -- FzfLuaBorder = { fg = colors.fg, bg = colors.bg },
-      -- FzfLuaPreviewNormal = common.normal,
-      -- FzfLuaPreviewBorder = { fg = colors.fg, bg = colors.bg },
-      -- FzfLuaCursor = { fg = colors.bg, bg = colors.fg },
-      -- FzfLuaCursorLine = common.selection,
+      FzfLuaBufFlagCur = c.orange,
+      FzfLuaHeaderText = c.orange,
+      FzfLuaLiveSym = c.fg,
+      FzfLuaLivePrompt = c.fg,
 
-      -- ================================================================================
-      -- Telescope
-      -- ================================================================================
-      -- TelescopeNormal = common.normal,
-      -- TelescopeBorder = { fg = colors.fg, bg = colors.bg },
-      -- TelescopePromptNormal = common.normal,
-      -- TelescopePromptBorder = { fg = colors.bg3, bg = colors.bg },
-      -- TelescopePromptTitle = c.orange,
-      -- TelescopeResultsTitle = c.blue,
-      -- TelescopePreviewTitle = c.green,
-      -- TelescopeSelection = common.selection,
-      -- TelescopeSelectionCaret = c.orange,
-      -- TelescopeMatching = c.blue,
+      FzfLuaPathLineNr = c.green,
+      FzfLuaPathColNr = c.red,
+      FzfLuaBufNr = c.fg,
+      FzfLuaHeaderBind = c.fg,
+      FzfLuaBufFlagAlt = c.blue,
 
       -- ================================================================================
       -- Blink-cmp
@@ -522,40 +525,6 @@ M.setup = function(colors)
       BlinkCmpScrollBarThumb = { bg = colors.grey },
       BlinkCmpScrollBarGutter = { bg = colors.bg2 },
       BlinkCmpLabelMatch = { fg = colors.green },
-
-      -- ================================================================================
-      -- Nvim-cmp
-      -- ================================================================================
-      -- CmpItemAbbrDeprecated = { fg = colors.grey, strikethrough = true },
-      -- CmpItemAbbrMatch = c.blue,
-      -- CmpItemAbbrMatchFuzzy = c.blue,
-      -- CmpItemKind = c.pink,
-      -- CmpItemMenu = c.grey,
-      -- CmpItemKindText = c.fg,
-      -- CmpItemKindMethod = c.blue,
-      -- CmpItemKindFunction = c.blue,
-      -- CmpItemKindConstructor = c.orange,
-      -- CmpItemKindField = c.blue,
-      -- CmpItemKindVariable = c.red,
-      -- CmpItemKindClass = c.orange,
-      -- CmpItemKindInterface = c.orange,
-      -- CmpItemKindModule = c.blue,
-      -- CmpItemKindProperty = c.red,
-      -- CmpItemKindUnit = c.orange,
-      -- CmpItemKindValue = c.orange,
-      -- CmpItemKindEnum = c.orange,
-      -- CmpItemKindKeyword = c.pink,
-      -- CmpItemKindSnippet = c.green,
-      -- CmpItemKindColor = c.green,
-      -- CmpItemKindFile = c.blue,
-      -- CmpItemKindReference = c.orange,
-      -- CmpItemKindFolder = c.blue,
-      -- CmpItemKindEnumMember = c.aqua,
-      -- CmpItemKindConstant = c.orange,
-      -- CmpItemKindStruct = c.orange,
-      -- CmpItemKindEvent = c.pink,
-      -- CmpItemKindOperator = c.aqua,
-      -- CmpItemKindTypeParameter = c.orange,
 
       -- ================================================================================
       -- LuaSnip
@@ -575,61 +544,10 @@ M.setup = function(colors)
       -- ================================================================================
       -- Indent Blankline
       -- ================================================================================
-      IndentBlanklineChar = common.indent_guide,
+      IblIndent = { fg = colors.indent },
+      IndentBlanklineChar = { fg = colors.indent },
       IndentBlanklineContextChar = c.grey_light,
-
-      -- ================================================================================
-      -- Comment.nvim
-      -- ================================================================================
-      CommentNvimComment = c.grey,
-
-      -- ================================================================================
-      -- Toggle Term
-      -- ================================================================================
-      ToggleTerm1FloatBorder = { fg = colors.bg3, bg = colors.bg },
-      ToggleTermNormal = c.bg,
-      ToggleTermBorder = { fg = colors.bg3, bg = colors.bg },
-
-      -- ================================================================================
-      -- Oil.nvim
-      -- ================================================================================
-      OilDir = c.blue,
-      OilDirIcon = c.blue,
-      OilLink = c.aqua,
-      OilLinkTarget = c.grey,
-      OilCopy = c.orange,
-      OilMove = c.pink,
-      OilChange = c.orange,
-      OilCreate = c.green,
-      OilDelete = c.red,
-      OilPermissionNone = c.grey,
-      OilPermissionRead = c.orange,
-      OilPermissionWrite = c.orange,
-      OilPermissionExecute = c.red,
-
-      -- ================================================================================
-      -- Indentation
-      -- ================================================================================
-      IblIndent = common.indent_guide,
       IblScope = c.grey_light,
-
-      -- ================================================================================
-      -- Multicursor
-      -- ================================================================================
-      -- MultiCursor = { fg = colors.bg, bg = colors.pink },
-      -- MultiCursorVisual = common.selection,
-      -- MultiCursorDisabledCursor = c.grey,
-      -- MultiCursorDisabledVisual = { fg = colors.grey, bg = colors.bg2 },
-
-      -- ================================================================================
-      -- Which-key
-      -- ================================================================================
-      -- WhichKey = c.pink,
-      -- WhichKeyGroup = c.blue,
-      -- WhichKeyDesc = c.fg,
-      -- WhichKeySeparator = c.grey,
-      -- WhichKeyFloat = c.bg,
-      -- WhichKeyBorder = c.bg3,
 
       -- ================================================================================
       -- Notifications
@@ -649,31 +567,6 @@ M.setup = function(colors)
       NotifyINFOTitle = c.blue,
       NotifyDEBUGTitle = c.grey,
       NotifyTRACETitle = c.pink,
-
-      -- ================================================================================
-      -- Neo-tree
-      -- ================================================================================
-      NeoTreeNormal = common.normal,
-      NeoTreeNormalNC = common.normal,
-      NeoTreeDirectoryIcon = c.blue,
-      NeoTreeDirectoryName = c.blue,
-      NeoTreeSymbolicLinkTarget = c.aqua,
-      NeoTreeRootName = c.orange,
-      NeoTreeDotfile = c.grey,
-      NeoTreeFileIcon = c.fg,
-      NeoTreeFileName = c.fg,
-      NeoTreeFileNameOpened = c.fg_light,
-      NeoTreeIndentMarker = c.grey,
-      NeoTreeExpander = c.grey,
-      NeoTreeModified = c.orange,
-      NeoTreeGitAdded = c.green,
-      NeoTreeGitConflict = c.red,
-      NeoTreeGitDeleted = c.red,
-      NeoTreeGitIgnored = c.grey,
-      NeoTreeGitModified = c.orange,
-      NeoTreeGitUnstaged = c.orange,
-      NeoTreeGitUntracked = c.green,
-      NeoTreeGitStaged = c.green,
    }
 
    for kind, color in pairs(lsp_kind_icons_color) do
