@@ -214,6 +214,7 @@ M.setup = function(colors)
       ["@function"] = c.red,
       ["@function.builtin"] = c.red,
       ["@constructor"] = c.aqua,
+      ["@function.macro"] = c.aqua,
 
       -- types & constants
       ["@type"] = c.orange,
@@ -239,6 +240,7 @@ M.setup = function(colors)
       ["@lsp.type.class"] = c.aqua,
       ["@lsp.type.namespace"] = c.aqua,
       ["@lsp.typemod.variable.defaultLibrary"] = c.orange,
+      ["@string.special.symbol"] = c.aqua,
 
       -- HTML/XML tags
       ["@tag"] = c.red,
