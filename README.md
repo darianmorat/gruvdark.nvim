@@ -1,25 +1,22 @@
 # gruvdark.nvim
 
-Professional and balanced colorscheme
+Professional and balanced colorscheme for neovim  
+Featuring a carefully thought-out palette designed for a minimal and pleasant look
 
-<table width="100%">
-  <tr>
-    <th>GruvDark</th>
-  </tr>
-  <tr>
-    <td width="50%">
-      <img src="https://i.postimg.cc/W2bNMsFH/dark.png" />
-    </td>
-  </tr>
-  <tr>
-    <th>GruvDark-Light</th>
-  </tr>
-  <tr>
-    <td width="50%">
-      <img src="https://i.postimg.cc/cdc1gvH3/light.png" />
-    </td>
-  </tr>
-</table>
+> ### Notes:
+>
+> Font used: [JetBrains Mono NL Slashed](https://github.com/sharpjs/JetBrainsMonoSlashed)  
+> Font weight: **Medium**
+
+## Screenshots
+
+#### Dark Mode
+
+![Screenshot GruvDark](https://i.postimg.cc/W2bNMsFH/dark.png)
+
+#### Light Mode
+
+![Screenshot GruvDark-Light](https://i.postimg.cc/cdc1gvH3/light.png)
 
 ## Installation
 
