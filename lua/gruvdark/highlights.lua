@@ -529,14 +529,6 @@ M.setup = function(colors)
       BlinkCmpLabelMatch = { fg = colors.green },
 
       -- ================================================================================
-      -- LuaSnip
-      -- ================================================================================
-      LuasnipChoiceNodePassive = c.grey,
-      LuasnipChoiceNodeActive = c.orange,
-      LuasnipInsertNodePassive = c.blue,
-      LuasnipInsertNodeActive = c.green,
-
-      -- ================================================================================
       -- Flash.nvim
       -- ================================================================================
       FlashCurrent = { fg = colors.bg, bg = colors.red_dark },
