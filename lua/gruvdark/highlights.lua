@@ -19,28 +19,29 @@ local function color_shortcuts(colors)
       grey_light = { fg = colors.grey_light },
 
       -- Background
-      bg = { bg = colors.bg },
+      bg0 = { bg = colors.bg0 },
       bg1 = { bg = colors.bg1 },
       bg2 = { bg = colors.bg2 },
       bg3 = { bg = colors.bg3 },
       bg4 = { bg = colors.bg4 },
       bg5 = { bg = colors.bg5 },
+      bg6 = { bg = colors.bg6 },
+      bg7 = { bg = colors.bg7 },
    }
 end
 
 local function common_highlights(colors)
    return {
-      normal = { fg = colors.fg, bg = colors.bg },
+      normal = { fg = colors.fg, bg = colors.bg0 },
       cursor_line = { bg = colors.none },
-      visual = { bg = colors.selection },
-      vert_split = { fg = colors.bg3 },
-      sign_column = { bg = colors.bg },
-      status_line = { fg = colors.fg, bg = colors.status_line },
-      status_line_nc = { fg = colors.grey, bg = colors.status_line },
-      end_of_buffer = { fg = colors.bg3 },
-      selection = { bg = colors.selection },
-      search = { fg = colors.bg, bg = colors.red_dark },
-      column = { bg = colors.column },
+      visual = { bg = colors.bg3 },
+      vert_split = { fg = colors.bg5 },
+      sign_column = { bg = colors.bg0 },
+      status_line = { fg = colors.fg, bg = colors.bg2 },
+      status_line_nc = { fg = colors.grey, bg = colors.bg2 },
+      end_of_buffer = { fg = colors.bg5 },
+      selection = { bg = colors.bg3 },
+      search = { fg = colors.bg0, bg = colors.red_dark },
    }
 end
 
@@ -97,43 +98,43 @@ M.setup = function(colors)
       Terminal = common.normal,
 
       -- Cursor & selection
-      Cursor = { fg = colors.bg, bg = colors.fg },
-      Cursor2 = { fg = colors.bg, bg = colors.red },
+      Cursor = { fg = colors.bg0, bg = colors.fg },
+      Cursor2 = { fg = colors.bg0, bg = colors.red },
       CursorLine = common.cursor_line,
-      CursorColumn = common.column,
+      CursorColumn = c.bg1,
       Visual = common.visual,
-      VisualNOS = { fg = colors.none, bg = colors.bg2, underline = true },
+      VisualNOS = { fg = colors.none, bg = colors.bg6, underline = true },
 
       -- Line numbers & columns
       LineNr = c.grey,
       CursorLineNr = c.grey_light,
       SignColumn = common.sign_column,
-      ColorColumn = common.column,
+      ColorColumn = c.bg1,
       EndOfBuffer = common.end_of_buffer,
 
       -- Window elements
       WinSeparator = common.vert_split,
-      Folded = { fg = colors.fg, bg = colors.bg1 },
-      FoldColumn = { fg = colors.grey, bg = colors.bg },
+      Folded = { fg = colors.fg, bg = colors.bg5 },
+      FoldColumn = { fg = colors.grey, bg = colors.bg0 },
 
       -- Search & matching
       Search = common.search,
       IncSearch = { fg = colors.fg_light, bg = colors.red_dark },
       Substitute = common.search,
-      MatchParen = { fg = colors.fg_light, bg = colors.bg3 },
+      MatchParen = { fg = colors.fg_light, bg = colors.bg5 },
 
       -- Yank highlighting
-      YankHighlight = { fg = colors.fg_light, bg = colors.bg2 },
+      YankHighlight = { fg = colors.fg_light, bg = colors.bg6 },
 
       -- Extras
       QuickFixLine = { fg = colors.blue, underline = true },
-      FloatBorder = { fg = colors.fg, bg = colors.bg },
-      Conceal = { fg = colors.grey, bg = colors.bg1 },
+      FloatBorder = { fg = colors.fg, bg = colors.bg0 },
+      Conceal = { fg = colors.grey, bg = colors.bg5 },
 
       -- Completion menus
-      Pmenu = { fg = colors.none, bg = colors.bg3 },
-      PmenuSel = { fg = colors.none, bg = colors.bg4 },
-      PmenuSbar = { fg = colors.none, bg = colors.bg4 },
+      Pmenu = { fg = colors.none, bg = colors.bg5 },
+      PmenuSel = { fg = colors.none, bg = colors.bg7 },
+      PmenuSbar = { fg = colors.none, bg = colors.bg7 },
       PmenuThumb = { fg = colors.none, bg = colors.grey },
 
       -- Statusline & tabline
@@ -330,9 +331,9 @@ M.setup = function(colors)
       -- ================================================================================
       -- TreeSitter Context
       -- ================================================================================
-      TreesitterContext = c.bg1,
-      TreesitterContextLineNumber = { fg = colors.grey_light, bg = colors.bg1 },
-      TreesitterContextSeparator = c.bg3,
+      TreesitterContext = c.bg3,
+      TreesitterContextLineNumber = { fg = colors.grey_light, bg = colors.bg3 },
+      TreesitterContextSeparator = c.bg5,
 
       -- ================================================================================
       -- LSP Context
@@ -343,9 +344,9 @@ M.setup = function(colors)
       LspCxxHlSkippedRegion = c.grey,
       LspCxxHlSkippedRegionBeginEnd = c.red,
 
-      LspReferenceText = c.bg2,
-      LspReferenceWrite = c.bg2,
-      LspReferenceRead = c.bg2,
+      LspReferenceText = c.bg6,
+      LspReferenceWrite = c.bg6,
+      LspReferenceRead = c.bg6,
 
       LspCodeLens = c.grey,
       LspCodeLensSeparator = c.grey,
@@ -379,15 +380,15 @@ M.setup = function(colors)
       DiagnosticUnderlineInfo = { sp = colors.blue, undercurl = true },
       DiagnosticUnderlineHint = { sp = colors.pink, undercurl = true },
 
-      DiagnosticSignError = { fg = colors.red, bg = colors.bg },
-      DiagnosticSignWarn = { fg = colors.orange, bg = colors.bg },
-      DiagnosticSignInfo = { fg = colors.blue, bg = colors.bg },
-      DiagnosticSignHint = { fg = colors.pink, bg = colors.bg },
+      DiagnosticSignError = { fg = colors.red, bg = colors.bg0 },
+      DiagnosticSignWarn = { fg = colors.orange, bg = colors.bg0 },
+      DiagnosticSignInfo = { fg = colors.blue, bg = colors.bg0 },
+      DiagnosticSignHint = { fg = colors.pink, bg = colors.bg0 },
 
       -- Debug
       Debug = c.orange,
-      debugPC = { fg = colors.bg, bg = colors.green },
-      debugBreakpoint = { fg = colors.bg, bg = colors.red },
+      debugPC = { fg = colors.bg0, bg = colors.green },
+      debugBreakpoint = { fg = colors.bg0, bg = colors.red },
 
       -- ================================================================================
       -- Diffview
@@ -469,9 +470,9 @@ M.setup = function(colors)
       GitSignsAddNr = c.green,
       GitSignsChangeNr = c.blue,
       GitSignsDeleteNr = c.red,
-      GitSignsAddLn = c.bg2,
-      GitSignsChangeLn = c.bg2,
-      GitSignsDeleteLn = c.bg2,
+      GitSignsAddLn = c.bg6,
+      GitSignsChangeLn = c.bg6,
+      GitSignsDeleteLn = c.bg6,
 
       -- ================================================================================
       -- FZF-lua
@@ -490,27 +491,27 @@ M.setup = function(colors)
       -- ================================================================================
       -- Blink-cmp
       -- ================================================================================
-      BlinkCmpMenu = { fg = colors.fg, bg = colors.bg3 },
-      BlinkCmpMenuBorder = { fg = colors.fg, bg = colors.bg3 },
-      BlinkCmpDoc = { fg = colors.fg, bg = colors.bg5 },
-      BlinkCmpDocBorder = { fg = colors.fg, bg = colors.bg5 },
-      BlinkCmpDocSeparator = { fg = colors.fg, bg = colors.bg5 },
+      BlinkCmpMenu = { fg = colors.fg, bg = colors.bg5 },
+      BlinkCmpMenuBorder = { fg = colors.fg, bg = colors.bg5 },
+      BlinkCmpDoc = { fg = colors.fg, bg = colors.bg4 },
+      BlinkCmpDocBorder = { fg = colors.fg, bg = colors.bg4 },
+      BlinkCmpDocSeparator = { fg = colors.fg, bg = colors.bg4 },
       BlinkCmpScrollBarThumb = { bg = colors.grey },
-      BlinkCmpScrollBarGutter = { bg = colors.bg2 },
+      BlinkCmpScrollBarGutter = { bg = colors.bg6 },
       BlinkCmpLabelMatch = { fg = colors.green },
 
       -- ================================================================================
       -- Flash.nvim
       -- ================================================================================
-      FlashCurrent = { fg = colors.bg, bg = colors.red_dark },
-      FlashMatch = { fg = colors.bg, bg = colors.red_dark },
+      FlashCurrent = { fg = colors.bg0, bg = colors.red_dark },
+      FlashMatch = { fg = colors.bg0, bg = colors.red_dark },
       FlashLabel = { fg = colors.fg_light, bg = colors.blue_dark },
 
       -- ================================================================================
       -- Indent Blankline
       -- ================================================================================
-      IblIndent = { fg = colors.indent },
-      IndentBlanklineChar = { fg = colors.indent },
+      IblIndent = { fg = colors.bg4 },
+      IndentBlanklineChar = { fg = colors.bg4 },
       IndentBlanklineContextChar = c.grey_light,
       IblScope = c.grey_light,
 

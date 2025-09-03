@@ -5,32 +5,28 @@ M.palettes = {
       -- Base
       fg = "#D6CFC4",
       fg_light = "#E6E3DE",
-      blue = "#579DD4",
+      blue = "#579DD4", --
       blue_dark = "#2A404F",
-      red = "#E16464",
+      red = "#E16464", --
       red_dark = "#B55353",
-      green = "#72BA62",
-      pink = "#D159B6",
+      green = "#72BA62", --
+      pink = "#D159B6", --
       purple = "#9266DA",
       aqua = "#00A596",
-      orange = "#D19F66",
-      grey = "#575757",
+      orange = "#D19F66", --
+      grey = "#575757", --
       grey_light = "#9D9A94",
+      none = "NONE",
 
       -- Background
-      bg = "#1E1E1E",
-      bg1 = "#303030",
-      bg2 = "#3C3C3C",
-      bg3 = "#373737",
-      bg4 = "#424242",
-      bg5 = "#323232",
-
-      -- Special
-      selection = "#303030",
-      column = "#232323",
-      indent = "#323232",
-      status_line = "#252525",
-      none = "NONE",
+      bg0 = "#1E1E1E",
+      bg1 = "#232323",
+      bg2 = "#252525",
+      bg3 = "#303030",
+      bg4 = "#323232",
+      bg5 = "#373737",
+      bg6 = "#3C3C3C",
+      bg7 = "#424242",
 
       -- Diff
       diff_add = "#31392b",
@@ -54,21 +50,17 @@ M.palettes = {
       orange = "#AE5F05",
       grey = "#707070",
       grey_light = "#8D8A85",
+      none = "NONE",
 
       -- Background
-      bg = "#F7F5EA",
-      bg1 = "#C5C5BB",
-      bg2 = "#EDEDDF",
-      bg3 = "#CCCCC4",
-      bg4 = "#B8B8AE",
-      bg5 = "#D0D0C6",
-
-      -- Special
-      selection = "#C5C5BB",
-      column = "#EDEDDF",
-      indent = "#C0C0B6",
-      status_line = "#E5E5DA",
-      none = "NONE",
+      bg0 = "#F7F5EA",
+      bg1 = "#EDEDDF",
+      bg2 = "#E5E5DA",
+      bg3 = "#D0D0C6",
+      bg5 = "#CCCCC4",
+      bg4 = "#C5C5BB",
+      bg6 = "#C0C0B6",
+      bg7 = "#B8B8AE",
 
       -- Diff
       diff_add = "#E6F4E6",
