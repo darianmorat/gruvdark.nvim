@@ -94,6 +94,7 @@ M.setup = function(colors)
       NormalNC = common.normal,
       NormalFloat = common.normal,
       MsgArea = common.normal,
+      Terminal = common.normal,
 
       -- Cursor & selection
       Cursor = { fg = colors.bg, bg = colors.fg },
@@ -125,7 +126,6 @@ M.setup = function(colors)
       YankHighlight = { fg = colors.fg_light, bg = colors.bg2 },
 
       -- Extras
-      Terminal = common.normal,
       QuickFixLine = { fg = colors.blue, underline = true },
       FloatBorder = { fg = colors.fg, bg = colors.bg },
       Conceal = { fg = colors.grey, bg = colors.bg1 },
@@ -442,45 +442,16 @@ M.setup = function(colors)
       -- ================================================================================
       -- Lazy.nvim
       -- ================================================================================
-      LazyProgressTodo = c.grey,
-      LazyProgressDone = c.green,
-      LazyCommit = c.green,
+      LazyProp = c.grey,
+      LazyDir = c.blue,
       LazyCommitType = c.pink,
-      LazyCommitScope = c.blue,
-
-      -- Reasons
-      LazyReasonPlugin = c.red,
+      LazyCommitScope = c.pink,
       LazyReasonRuntime = c.blue,
       LazyReasonCmd = c.orange,
-      LazyReasonSource = c.orange,
       LazyReasonImport = c.pink,
-      LazyReasonFt = c.green,
-      LazyReasonEvent = c.aqua,
       LazyReasonKeys = c.pink,
       LazyReasonStart = c.orange,
-
-      -- Sections / UI
-      LazyH1 = { fg = colors.fg, bg = colors.red_dark },
-      LazyH2 = c.fg,
-      LazyButton = { bg = colors.none },
-      LazyButtonActive = { bg = colors.selection },
-      LazyComment = c.grey,
-      LazyNormal = common.normal,
-
-      -- Extras
-      LazySpecial = c.red,
-      LazyDir = c.blue,
       LazyUrl = { fg = colors.aqua, underline = true },
-      LazyValue = c.green,
-      LazyProp = c.grey,
-
-      -- Status indicators
-      LazyLocal = c.aqua,
-      LazyDimmed = c.grey,
-      LazyNotLoaded = c.grey,
-      LazyLoaded = c.green,
-      LazyTaskOutput = c.fg,
-      LazyTaskError = c.red,
 
       -- ================================================================================
       -- Conform
