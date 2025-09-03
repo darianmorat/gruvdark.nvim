@@ -359,19 +359,19 @@ M.setup = function(colors)
       DiagnosticOk = c.green,
 
       DiagnosticVirtualTextError = {
-         bg = util.darken(colors.red, 0.1, colors.bg),
+         bg = util.darken(colors.red, 0.1, colors.bg0),
          fg = colors.red,
       },
       DiagnosticVirtualTextWarn = {
-         bg = util.darken(colors.orange, 0.1, colors.bg),
+         bg = util.darken(colors.orange, 0.1, colors.bg0),
          fg = colors.orange,
       },
       DiagnosticVirtualTextInfo = {
-         bg = util.darken(colors.aqua, 0.1, colors.bg),
+         bg = util.darken(colors.aqua, 0.1, colors.bg0),
          fg = colors.aqua,
       },
       DiagnosticVirtualTextHint = {
-         bg = util.darken(colors.pink, 0.1, colors.bg),
+         bg = util.darken(colors.pink, 0.1, colors.bg0),
          fg = colors.pink,
       },
 
@@ -421,16 +421,17 @@ M.setup = function(colors)
       Added = c.green,
       Removed = c.red,
       Changed = c.blue,
-      DiffAdd = { fg = colors.none, bg = colors.diff_add },
-      DiffDelete = { fg = colors.none, bg = colors.diff_delete },
-      DiffChange = { fg = colors.none, bg = colors.diff_change },
-      DiffText = { fg = colors.none, bg = colors.diff_text },
       DiffAdded = c.green,
       DiffChanged = c.blue,
       DiffRemoved = c.red,
       DiffDeleted = c.red,
       DiffFile = c.aqua,
       DiffIndexLine = c.grey,
+
+      DiffAdd = { fg = colors.none, bg = colors.diff_add },
+      DiffDelete = { fg = colors.none, bg = colors.diff_delete },
+      DiffChange = { fg = colors.none, bg = colors.diff_change },
+      DiffText = { fg = colors.none, bg = colors.diff_text },
 
       -- ================================================================================
       -- Spell checking
@@ -465,14 +466,14 @@ M.setup = function(colors)
       -- GitSigns
       -- ================================================================================
       GitSignsAdd = c.green,
-      GitSignsChange = c.blue,
-      GitSignsDelete = c.red,
+      GitSignsAddLn = c.green,
       GitSignsAddNr = c.green,
+      GitSignsChange = c.blue,
+      GitSignsChangeLn = c.blue,
       GitSignsChangeNr = c.blue,
+      GitSignsDelete = c.red,
+      GitSignsDeleteLn = c.red,
       GitSignsDeleteNr = c.red,
-      GitSignsAddLn = c.bg6,
-      GitSignsChangeLn = c.bg6,
-      GitSignsDeleteLn = c.bg6,
 
       -- ================================================================================
       -- FZF-lua
