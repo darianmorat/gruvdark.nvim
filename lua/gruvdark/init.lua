@@ -17,8 +17,7 @@ M.load = function(palette_name, opts)
 
    -- Handle transparent option
    if opts.transparent then
-      colors.bg = "NONE"
-      colors.bg1 = "NONE"
+      colors.bg0 = "NONE"
    end
 
    -- Override with user colors
