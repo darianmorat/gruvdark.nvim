@@ -29,6 +29,8 @@ M.palettes = {
 
       -- Extras
       none = "NONE",
+      line_nr = "#545454",
+      cursor_line = "#B1AFA8",
 
       diff_add = "#31392b",
       diff_delete = "#382b2c",
@@ -64,6 +66,8 @@ M.palettes = {
 
       -- Extras
       none = "NONE",
+      line_nr = "#8D8A85",
+      cursor_line = "#212121",
 
       diff_add = "#DAF6DC",
       diff_delete = "#F4D3D6",

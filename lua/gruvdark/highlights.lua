@@ -27,6 +27,10 @@ local function color_shortcuts(colors)
       bg5 = { bg = colors.bg5 },
       bg6 = { bg = colors.bg6 },
       bg7 = { bg = colors.bg7 },
+
+      -- Extras
+      line_nr = { fg = colors.line_nr },
+      cursor_nr = { fg = colors.cursor_line },
    }
 end
 
@@ -106,8 +110,8 @@ M.setup = function(colors)
       VisualNOS = { fg = colors.none, bg = colors.bg6, underline = true },
 
       -- Line numbers & columns
-      LineNr = c.grey,
-      CursorLineNr = c.grey_light,
+      LineNr = c.line_nr,
+      CursorLineNr = c.cursor_nr,
       SignColumn = common.sign_column,
       ColorColumn = c.bg1,
       EndOfBuffer = common.end_of_buffer,
