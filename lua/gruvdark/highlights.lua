@@ -149,6 +149,24 @@ M.setup = function(colors)
       TabLineFill = common.status_line,
       TabLineSel = { fg = colors.fg, bg = colors.grey },
 
+      -- Mini
+      MiniPickBorder                                           = { fg = colors.fg, bg = colors.bg0 },
+      MiniPickBorderBusy                                       = { fg = colors.red, bg = colors.bg0 },
+      MiniPickBorderText                                       = { fg = colors.fg, bg = colors.bg0 },
+      MiniPickCursor                                           = { fg = colors.fg, bg = colors.bg0 },
+      MiniPickIconDirectory                                    = { bg = colors.bg0 },
+      MiniPickIconFile                                         = { bg = colors.bg3 },
+      MiniPickHeader                                           = { bg = colors.bg3 },
+      MiniPickMatchCurrent                                     = { bg = colors.bg3 },
+      MiniPickMatchMarked                                      = { fg = colors.red, bg = colors.bg0 },
+      MiniPickMatchRanges                                      = { fg = colors.green, bg = colors.bg0 },
+      MiniPickNormal                                           = { bg = colors.bg0 },
+      MiniPickPreviewLine                                      = { fg = colors.fg, bg = colors.bg0 },
+      MiniPickPreviewRegion                                    = { fg = colors.fg, bg = colors.bg0 },
+      MiniPickPrompt                                           = { fg = colors.fg, bg = colors.bg0 },
+      MiniPickPromptCaret                                      = { fg = colors.fg, bg = colors.bg0 },
+      MiniPickPromptPrefix                                     = { fg = colors.fg, bg = colors.bg0 },
+
       -- ================================================================================
       -- SYNTAX HIGHLIGHTING
       -- ================================================================================
