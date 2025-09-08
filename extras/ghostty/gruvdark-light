@@ -1,0 +1,29 @@
+# gruvdark-light ghostty theme
+
+foreground = #111111 
+background = #F7F5EA 
+
+selection-background = #B0B0A6
+selection-foreground = #101010
+cursor-color = #404040
+cursor-text = #EAE7E1
+split-divider-color = #4F4F4F
+
+palette = 0=#1B1B1B
+palette = 1=#9F0202
+palette = 2=#006C00
+palette = 3=#AE5F05
+palette = 4=#1E5A8B
+palette = 5=#910E79
+palette = 6=#008B7F
+palette = 7=#111111
+palette = 8=#111111
+palette = 9=#9F0202
+palette = 10=#006C00
+palette = 11=#AE5F05
+palette = 12=#1E5A8B
+palette = 13=#910E79
+palette = 14=#008B7F
+palette = 15=#111111
+
+
