@@ -9,6 +9,7 @@ M.load = function(palette_name, opts)
    opts = opts or M.opts or {}
 
    vim.cmd("highlight clear")
+   vim.g.colors_name = palette_name
    if vim.fn.exists("syntax_on") == 1 then
       vim.cmd("syntax reset")
    end
