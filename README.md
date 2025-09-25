@@ -12,11 +12,11 @@ Featuring a carefully thought-out palette designed for a minimal and pleasant lo
 
 #### Dark Mode
 
-![Screenshot GruvDark](https://i.postimg.cc/W2bNMsFH/dark.png)
+![Screenshot GruvDark](https://i.postimg.cc/FFzjcv07/dark.png)
 
 #### Light Mode
 
-![Screenshot GruvDark-Light](https://i.postimg.cc/cdc1gvH3/light.png)
+![Screenshot GruvDark-Light](https://i.postimg.cc/q0DFFMbD/light.png)
 
 ## Installation
 
