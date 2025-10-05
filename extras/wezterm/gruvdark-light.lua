@@ -1,5 +1,5 @@
 return {
-   foreground = "#111111",
+   foreground = "#101010",
    background = "#F7F5EA",
    cursor_fg = "#EAE7E1",
    cursor_bg = "#404040",
@@ -14,19 +14,19 @@ return {
       "#9F0202", -- red
       "#006C00", -- green
       "#AE5F05", -- orange
-      "#1E5A8B", -- blue
+      "#0F5289", -- blue
       "#910E79", -- pink
-      "#008B7F", -- aqua
-      "#111111", -- white
+      "#017F75", -- aqua
+      "#101010", -- white
    },
    brights = {
-      "#111111", -- brightBlack
+      "#101010", -- brightBlack
       "#9F0202", -- brightRed
       "#006C00", -- brightGreen
       "#AE5F05", -- brightOrange
-      "#1E5A8B", -- brightBlue
+      "#0F5289", -- brightBlue
       "#910E79", -- brightPink
-      "#008B7F", -- brightAqua
-      "#111111", -- brightWhite
+      "#017F75", -- brightAqua
+      "#101010", -- brightWhite
    },
 }

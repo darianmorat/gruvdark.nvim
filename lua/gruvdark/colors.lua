@@ -5,6 +5,9 @@ M.palettes = {
       -- Base
       fg = "#D6CFC4",
       fg_light = "#E6E3DE",
+      fg_search = "#E6E3DE",
+      fg_search2 = "#212121",
+
       blue = "#579DD4",
       blue_dark = "#2A404F",
       red = "#E16464",
@@ -40,16 +43,19 @@ M.palettes = {
 
    gruvdark_light = {
       -- Base
-      fg = "#111111",
+      fg = "#101010",
       fg_light = "#000000",
-      blue = "#1E5A8B",
-      blue_dark = "#144266",
+      fg_search = "#F2EEDE",
+      fg_search2 = "#C6C3B7",
+
+      blue = "#0F5289",
+      blue_dark = "#044272",
       red = "#9F0202",
-      red_dark = "#7A0101",
+      red_dark = "#AD4B4B",
       green = "#006C00",
       pink = "#910E79",
       purple = "#5D4A8A",
-      aqua = "#008B7F",
+      aqua = "#017F75",
       orange = "#AE5F05",
       grey = "#707070",
       grey_light = "#8D8A85",

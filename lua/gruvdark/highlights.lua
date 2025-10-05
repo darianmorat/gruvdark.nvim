@@ -123,7 +123,7 @@ M.setup = function(colors)
 
       -- Search & matching
       Search = common.search,
-      IncSearch = { fg = colors.fg_light, bg = colors.red_dark },
+      IncSearch = { fg = colors.fg_search, bg = colors.red_dark },
       Substitute = common.search,
       MatchParen = { fg = colors.fg_light, bg = colors.bg5 },
 
@@ -508,9 +508,9 @@ M.setup = function(colors)
       -- ================================================================================
       -- Flash.nvim
       -- ================================================================================
-      FlashCurrent = { fg = colors.bg0, bg = colors.red_dark },
-      FlashMatch = { fg = colors.bg0, bg = colors.red_dark },
-      FlashLabel = { fg = colors.fg_light, bg = colors.blue_dark },
+      FlashCurrent = { fg = colors.fg_search2, bg = colors.red_dark },
+      FlashMatch = { fg = colors.fg_search2, bg = colors.red_dark },
+      FlashLabel = { fg = colors.fg_search, bg = colors.blue_dark },
 
       -- ================================================================================
       -- Indent Blankline

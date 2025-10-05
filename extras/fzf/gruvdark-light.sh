@@ -4,19 +4,19 @@ export FZF_DEFAULT_OPTS="
   --border=none
   --highlight-line
   --info=inline-right
-  --color=fg:#111111
+  --color=fg:#101010
   --color=fg+:#000000
   --color=bg:#F7F5EA
   --color=bg+:#B0B0A6
   --color=gutter:-1
-  --color=prompt:#1E5A8B
+  --color=prompt:#0F5289
   --color=marker:#7A0101
   --color=pointer:#7A0101
   --color=header:#AE5F05
   --color=info:#707070
   --color=hl:#006C00
   --color=hl+:#006C00
-  --color=query:#111111
+  --color=query:#101010
   --color=scrollbar:#707070
   --color=separator:#707070
 "

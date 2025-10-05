@@ -1,6 +1,4 @@
-# gruvdark-light ghostty theme
-
-foreground = #111111 
+foreground = #101010 
 background = #F7F5EA 
 
 selection-background = #B0B0A6
@@ -13,15 +11,15 @@ palette = 0=#1B1B1B
 palette = 1=#9F0202
 palette = 2=#006C00
 palette = 3=#AE5F05
-palette = 4=#1E5A8B
+palette = 4=#0F5289
 palette = 5=#910E79
-palette = 6=#008B7F
-palette = 7=#111111
-palette = 8=#111111
+palette = 6=#017F75
+palette = 7=#101010
+palette = 8=#101010
 palette = 9=#9F0202
 palette = 10=#006C00
 palette = 11=#AE5F05
-palette = 12=#1E5A8B
+palette = 12=#0F5289
 palette = 13=#910E79
-palette = 14=#008B7F
-palette = 15=#111111
+palette = 14=#017F75
+palette = 15=#101010

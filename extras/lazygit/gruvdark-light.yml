@@ -6,5 +6,5 @@ gui:
       - white
       - bold
     selectedLineBgColor:
-      - "#b0b0a6"
+      - "#B0B0A6"
       - bold

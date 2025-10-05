@@ -1,12 +1,10 @@
-# gruvdark-dark ghostty theme
-
-foreground = #d6cfc4
-background = #1e1e1e
+foreground = #D6CFC4
+background = #1E1E1E
 
 selection-background = #303030
 selection-foreground = #D6CFC4
 cursor-color = #E6E3DE
-cursor-text = #1e1e1e
+cursor-text = #1E1E1E
 split-divider-color = #404040
 
 palette = 0=#4F4F4F
