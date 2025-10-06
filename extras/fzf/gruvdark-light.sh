@@ -10,8 +10,8 @@ export FZF_DEFAULT_OPTS="
   --color=bg+:#B0B0A6
   --color=gutter:-1
   --color=prompt:#0F5289
-  --color=marker:#7A0101
-  --color=pointer:#7A0101
+  --color=marker:#AD4B4B
+  --color=pointer:#AD4B4B
   --color=header:#AE5F05
   --color=info:#707070
   --color=hl:#006C00
@@ -20,4 +20,3 @@ export FZF_DEFAULT_OPTS="
   --color=scrollbar:#707070
   --color=separator:#707070
 "
-
