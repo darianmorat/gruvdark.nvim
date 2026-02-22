@@ -5,7 +5,7 @@ Featuring a carefully thought-out palette designed for a minimal and pleasant lo
 
 > ### Notes:
 >
-> Font used: [JetBrains Mono NL Slashed](https://github.com/sharpjs/JetBrainsMonoSlashed)  
+> Font used: [JetBrains Mono Nerd](https://archlinux.org/packages/extra/any/ttf-jetbrains-mono-nerd)  
 > Font weight: **Medium**
 
 ## Screenshots
