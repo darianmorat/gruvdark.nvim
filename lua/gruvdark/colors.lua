@@ -43,7 +43,7 @@ M.palettes = {
 
    gruvdark_light = {
       -- Base
-      fg = "#101010",
+      fg = "#111111",
       fg_light = "#000000",
       fg_search = "#F2EEDE",
       fg_search2 = "#C6C3B7",

@@ -1,10 +1,5 @@
 gui:
-  authorColors:
-    '*': 'blue'
   theme:
-    activeBorderColor:
-      - white
-      - bold
     selectedLineBgColor:
-      - "#B0B0A6"
+      - "#C9C9BF"
       - bold

@@ -1,11 +1,11 @@
 return {
-   foreground = "#101010",
+   foreground = "#111111",
    background = "#F7F5EA",
    cursor_fg = "#EAE7E1",
    cursor_bg = "#404040",
    cursor_border = "#404040",
    selection_fg = "#101010",
-   selection_bg = "#B0B0A6",
+   selection_bg = "#C9C9BF",
    split = "#4F4F4F",
    scrollbar_thumb = "#4F4F4F",
 
@@ -14,19 +14,19 @@ return {
       "#9F0202", -- red
       "#006C00", -- green
       "#AE5F05", -- orange
-      "#0F5289", -- blue
+      "#1E5A8B", -- blue
       "#910E79", -- pink
-      "#017F75", -- aqua
-      "#101010", -- white
+      "#008B7F", -- aqua
+      "#111111", -- white
    },
    brights = {
-      "#101010", -- brightBlack
+      "#111111", -- brightBlack
       "#9F0202", -- brightRed
       "#006C00", -- brightGreen
       "#AE5F05", -- brightOrange
-      "#0F5289", -- brightBlue
+      "#1E5A8B", -- brightBlue
       "#910E79", -- brightPink
-      "#017F75", -- brightAqua
-      "#101010", -- brightWhite
+      "#008B7F", -- brightAqua
+      "#111111", -- brightWhite
    },
 }
