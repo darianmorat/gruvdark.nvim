@@ -1,25 +1,26 @@
-foreground = #111111 
+foreground = #070707 
 background = #F7F5EA 
-
-selection-background = #C9C9BF
 selection-foreground = #101010
-cursor-color = #404040
+selection-background = #C9C9BF
+
 cursor-text = #EAE7E1
+cursor-color = #404040
 split-divider-color = #4F4F4F
 
-palette = 0=#1B1B1B
+palette = 0=#070707
 palette = 1=#9F0202
 palette = 2=#006C00
 palette = 3=#AE5F05
-palette = 4=#0F5289
+palette = 4=#1E5A8B
 palette = 5=#910E79
-palette = 6=#017F75
-palette = 7=#111111
-palette = 8=#111111
+palette = 6=#008B7F
+palette = 7=#070707
+
+palette = 8=#070707
 palette = 9=#9F0202
 palette = 10=#006C00
 palette = 11=#AE5F05
-palette = 12=#0F5289
+palette = 12=#1E5A8B
 palette = 13=#910E79
-palette = 14=#017F75
-palette = 15=#111111
+palette = 14=#008B7F
+palette = 15=#070707

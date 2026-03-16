@@ -1,6 +1,6 @@
 export FZF_DEFAULT_OPTS="
 --ansi
---color=fg:#101010
+--color=fg:#070707
 --color=fg+:#000000
 --color=bg:#F7F5EA
 --color=bg+:#C9C9BF

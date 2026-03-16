@@ -1,13 +1,13 @@
 return {
    foreground = "#D6CFC4",
    background = "#1E1E1E",
+   selection_fg = "#D6CFC4",
+   selection_bg = "#303030",
+
    cursor_fg = "#1E1E1E",
    cursor_bg = "#E6E3DE",
    cursor_border = "#D6CFC4",
-   selection_fg = "#D6CFC4",
-   selection_bg = "#303030",
    split = "#404040",
-   scrollbar_thumb = "#303030",
 
    ansi = {
       "#4F4F4F", -- black
