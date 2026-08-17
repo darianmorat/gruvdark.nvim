@@ -239,7 +239,6 @@ M.setup = function(colors)
       -- punctuation
       ["@punctuation.bracket"] = c.fg,
       ["@punctuation.delimiter"] = c.grey_light,
-      ["@punctuation.special"] = c.grey_light,
 
       -- LSP semantic tokens
       ["@lsp.type.class"] = c.aqua,
@@ -310,27 +309,15 @@ M.setup = function(colors)
       ["@markup.raw.block.markdown"] = c.green,
       ["@markup.link.markdown_inline"] = c.fg,
       ["@markup.link.label.markdown_inline"] = c.blue,
-      ["@markup.link.url.markdown_inline"] = { fg = colors.aqua, underline = true },
+
+      ["@markup.raw.markdown_inline"] = c.orange,
+      ["@markup.link.label.markdown"] = c.fg,
+      ["@markup.quote.markdown"] = c.fg,
+      ["@punctuation.special.markdown"] = c.grey_light,
       ["@label.markdown"] = c.grey,
-
-      -- More specific diff treesitter nodes
-      ["@diff.plus"] = c.green,
-      ["@diff.minus"] = c.red,
-      ["@diff.delta"] = c.blue,
-
-      -- Markup treesitter nodes
-      ["@markup.emphasis"] = { fg = colors.fg, italic = true },
-      ["@markup.strong"] = { fg = colors.fg, bold = true },
-      ["@markup.underline"] = { fg = colors.fg, underline = true },
-      ["@markup.strike"] = { fg = colors.fg, strikethrough = true },
-      ["@markup.math"] = c.fg,
-      ["@markup.environment"] = c.fg,
-      ["@markup.environment.name"] = c.fg,
-      ["@markup.list"] = c.red,
 
       -- Others
       markdownLinkText = c.blue,
-      ["@punctuation.special"] = c.red,
 
       -- ================================================================================
       -- TreeSitter Context
