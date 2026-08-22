@@ -20,7 +20,13 @@ Featuring a carefully thought-out palette designed for a minimal and pleasant lo
 
 ## Installation
 
-Using [Lazy.nvim](https://github.com/folke/lazy.nvim)
+Using [vim.pack](https://neovim.io/doc/user/helptag.html?tag=vim.pack):
+
+```lua
+vim.pack.add({ src = "https://github.com/darianmorat/gruvdark.nvim" })
+```
+
+Using [folke/lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
 {
