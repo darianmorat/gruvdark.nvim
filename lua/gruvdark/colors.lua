@@ -6,6 +6,12 @@ M.palettes = {
       fg = "#D6CFC4",
       fg_light = "#E6E3DE",
 
+      none = "NONE",
+
+      line_nr = "#545454",
+      cursor_nr = "#B1AFA8",
+      punc_char = "#9D9A94",
+
       blue = "#579DD4",
       red = "#E16464",
       green = "#72BA62",
@@ -25,12 +31,7 @@ M.palettes = {
       bg6 = "#3C3C3C",
       bg7 = "#424242",
 
-      -- Extras
-      none = "NONE",
-      line_nr = "#545454",
-      cursor_nr = "#B1AFA8",
-      punc_char = "#9D9A94",
-
+      -- Git diff
       diff_add = "#31392b",
       diff_delete = "#382b2c",
       diff_change = "#1c3448",
@@ -41,6 +42,12 @@ M.palettes = {
       -- Base
       fg = "#070707",
       fg_light = "#000000",
+
+      none = "NONE",
+
+      line_nr = "#8D8A85",
+      cursor_nr = "#212121",
+      punc_char = "#82807A",
 
       blue = "#0F5289",
       red = "#9F0202",
@@ -61,12 +68,7 @@ M.palettes = {
       bg6 = "#C0C0B6",
       bg7 = "#B8B8AE",
 
-      -- Extras
-      none = "NONE",
-      line_nr = "#8D8A85",
-      cursor_nr = "#212121",
-      punc_char = "#82807A",
-
+      -- Git diff
       diff_add = "#DAF6DC",
       diff_delete = "#F4D3D6",
       diff_change = "#DFEAFA",
