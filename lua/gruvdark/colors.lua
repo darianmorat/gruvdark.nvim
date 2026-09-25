@@ -5,20 +5,15 @@ M.palettes = {
       -- Base
       fg = "#D6CFC4",
       fg_light = "#E6E3DE",
-      fg_search = "#E6E3DE",
-      fg_search2 = "#212121",
 
       blue = "#579DD4",
-      blue_dark = "#2A404F",
       red = "#E16464",
-      red_dark = "#B55353",
       green = "#72BA62",
       pink = "#D159B6",
       purple = "#9266DA",
       aqua = "#00A596",
       orange = "#D19F66",
       grey = "#575757",
-      grey_light = "#9D9A94",
 
       -- Background
       bg0 = "#1E1E1E",
@@ -33,7 +28,8 @@ M.palettes = {
       -- Extras
       none = "NONE",
       line_nr = "#545454",
-      cursor_line = "#B1AFA8",
+      cursor_nr = "#B1AFA8",
+      punc_char = "#9D9A94",
 
       diff_add = "#31392b",
       diff_delete = "#382b2c",
@@ -45,20 +41,15 @@ M.palettes = {
       -- Base
       fg = "#070707",
       fg_light = "#000000",
-      fg_search = "#F2EEDE",
-      fg_search2 = "#C6C3B7",
 
       blue = "#0F5289",
-      blue_dark = "#044272",
       red = "#9F0202",
-      red_dark = "#AD4B4B",
       green = "#006C00",
       pink = "#910E79",
       purple = "#5D4A8A",
       aqua = "#017F75",
       orange = "#AE5F05",
       grey = "#707070",
-      grey_light = "#8D8A85",
 
       -- Background
       bg0 = "#F7F5EA",
@@ -73,7 +64,8 @@ M.palettes = {
       -- Extras
       none = "NONE",
       line_nr = "#8D8A85",
-      cursor_line = "#212121",
+      cursor_nr = "#212121",
+      punc_char = "#82807A",
 
       diff_add = "#DAF6DC",
       diff_delete = "#F4D3D6",
