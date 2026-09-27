@@ -13,20 +13,20 @@ return {
       "#070707", -- black
       "#9F0202", -- red
       "#006C00", -- green
-      "#AE5F05", -- orange
+      "#AE5F05", -- yellow
       "#1E5A8B", -- blue
-      "#910E79", -- pink
-      "#008B7F", -- aqua
+      "#910E79", -- purple
+      "#008B7F", -- cyan
       "#070707", -- white
    },
    brights = {
       "#070707", -- brightBlack
       "#9F0202", -- brightRed
       "#006C00", -- brightGreen
-      "#AE5F05", -- brightOrange
+      "#AE5F05", -- brightYellow
       "#1E5A8B", -- brightBlue
-      "#910E79", -- brightPink
-      "#008B7F", -- brightAqua
+      "#910E79", -- brightPurple
+      "#008B7F", -- brightCyan
       "#070707", -- brightWhite
    },
 }
