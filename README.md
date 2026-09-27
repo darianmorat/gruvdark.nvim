@@ -1,36 +1,26 @@
-# gruvdark.nvim
+# shibumi.nvim
 
-Professional and balanced colorscheme for neovim  
-Featuring a carefully thought-out palette designed for a minimal and pleasant look
+渋み · _Simple and unobtrusive by design_
 
-> ### Notes:
->
-> Font used: [JetBrains Mono Nerd](https://archlinux.org/packages/extra/any/ttf-jetbrains-mono-nerd)  
-> Font weight: **Medium**
-
-## Screenshots
-
-#### Dark Mode
-
-![Screenshot GruvDark](https://i.postimg.cc/FFzjcv07/dark.png)
-
-#### Light Mode
-
-![Screenshot GruvDark-Light](https://i.postimg.cc/q0DFFMbD/light.png)
+![Screenshot Shibumi](./assets/dark.png)
+![Screenshot Shibumi-Light](./assets/light.png)
 
 ## Installation
 
 Using [vim.pack](https://neovim.io/doc/user/helptag.html?tag=vim.pack):
 
 ```lua
-vim.pack.add({ src = "https://github.com/darianmorat/gruvdark.nvim" })
+vim.pack.add({
+   { src = "https://github.com/darianmorat/shibumi.nvim" }
+})
+
 ```
 
-Using [folke/lazy.nvim](https://github.com/folke/lazy.nvim):
+Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
 {
-   "darianmorat/gruvdark.nvim",
+   "darianmorat/shibumi.nvim",
    lazy = false,
    priority = 1000,
    opts = {},
@@ -42,18 +32,16 @@ Using [folke/lazy.nvim](https://github.com/folke/lazy.nvim):
 Enable the colorscheme:
 
 ```lua
-vim.cmd.colorscheme("gruvdark")
+vim.cmd.colorscheme("shibumi")
 -- or
-vim.cmd.colorscheme("gruvdark-light")
+vim.cmd.colorscheme("shibumi-light")
 ```
 
 ## Configuration
 
-Additional settings for gruvdark are:
+Some additional settings:
 
 ```lua
--- Default options:
-
 opts = {
    transparent = false, -- Show or hide background
    colors = {}, -- Override default colors
@@ -63,5 +51,5 @@ opts = {
 
 ## Contributing
 
-Contributions are welcome!  
+Pull requests are welcome!  
 Bug reports and feature suggestions can also be submitted via [Issues](../../issues)
