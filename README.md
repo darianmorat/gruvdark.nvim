@@ -2,8 +2,8 @@
 
 渋み · _Simple and unobtrusive by design_
 
-![Screenshot Shibumi](./assets/dark.png)
-![Screenshot Shibumi-Light](./assets/light.png)
+![Screenshot Shibumi](./assets/shibumi.png)
+![Screenshot Shibumi-Light](./assets/shibumi-light.png)
 
 ## Installation
 

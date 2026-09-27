@@ -14,7 +14,7 @@ M.load = function(palette_name, opts)
       vim.cmd("syntax reset")
    end
 
-   local colors = require("gruvdark.colors").palettes[palette_name]
+   local colors = require("shibumi.colors").palettes[palette_name]
 
    -- Handle transparent option
    if opts.transparent then
@@ -28,7 +28,7 @@ M.load = function(palette_name, opts)
       end
    end
 
-   local highlights = require("gruvdark.highlights").setup(colors)
+   local highlights = require("shibumi.highlights").setup(colors)
 
    -- Override with user highlights
    if opts.highlights then

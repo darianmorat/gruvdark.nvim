@@ -1,7 +1,7 @@
 local M = {}
 
 M.palettes = {
-   gruvdark = {
+   shibumi = {
       -- Base
       fg = "#D6CFC4",
       fg_light = "#E6E3DE",
@@ -38,7 +38,7 @@ M.palettes = {
       diff_text = "#2c5372",
    },
 
-   gruvdark_light = {
+   shibumi_light = {
       -- Base
       fg = "#070707",
       fg_light = "#000000",

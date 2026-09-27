@@ -1,5 +1,5 @@
 local M = {}
-local util = require("gruvdark.util")
+local util = require("shibumi.util")
 
 M.setup = function(colors)
    local highlights = {
