@@ -261,9 +261,9 @@ M.setup = function(colors)
       Changed = { fg = colors.blue },
 
       DiffAdd = { fg = colors.none, bg = colors.diff_add },
-      DiffDelete = { fg = colors.none, bg = colors.diff_delete },
+      DiffDelete = { fg = colors.grey, bg = colors.none },
       DiffChange = { fg = colors.none, bg = colors.diff_change },
-      DiffText = { fg = colors.none, bg = colors.diff_text },
+      DiffText = { fg = colors.fg_light, bg = colors.diff_text },
 
       -- TITLE: Plugins Modules -------------------------------------------------------------------
 
@@ -289,6 +289,12 @@ M.setup = function(colors)
       GitSignsDelete = { fg = colors.red },
       GitSignsDeleteLn = { fg = colors.red },
       GitSignsDeleteNr = { fg = colors.red },
+      GitSignsAddInline = { fg = colors.bg0, bg = colors.green },
+      GitSignsDeleteInline = { fg = colors.bg0, bg = colors.red },
+      GitSignsChangeInline = { fg = colors.bg0, bg = colors.green },
+      GitSignsAddPreview = { fg = colors.green, bg = colors.diff_add },
+      GitSignsDeletePreview = { fg = colors.red, bg = colors.diff_delete },
+      GitSignsDeleteVirtLn = { fg = colors.red, bg = colors.diff_delete },
 
       -- FZF-lua
       FzfLuaBufFlagCur = { fg = colors.orange },

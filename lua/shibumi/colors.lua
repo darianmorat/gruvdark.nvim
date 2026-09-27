@@ -32,10 +32,10 @@ M.palettes = {
       bg7 = "#424242",
 
       -- Git diff
-      diff_add = "#31392b",
-      diff_delete = "#382b2c",
-      diff_change = "#1c3448",
-      diff_text = "#2c5372",
+      diff_add = "#2D3A2A",
+      diff_delete = "#3A292B",
+      diff_change = "#1C3448",
+      diff_text = "#355C7C",
    },
 
    shibumi_light = {
